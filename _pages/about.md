@@ -19,7 +19,7 @@ social: false  # includes social icons at the bottom of the page
 
 # Announcing Accepted Blogposts
 
->The International Conference on Learning Representations (ICLR) is proud to announce the fourth edition of its Blogposts Track, our 2022 established publication venue to address the lack of up-to-date educational, critical, and insightful communications in the fast-paced fields of Machine Learning and Artificial Intelligence. The Blogposts Track offers a unique venue to discuss recent developments, research directions, and reflect on past work while offering accessible education.
+>Hiiiii I am mahsaThe International Conference on Learning Representations (ICLR) is proud to announce the fourth edition of its Blogposts Track, our 2022 established publication venue to address the lack of up-to-date educational, critical, and insightful communications in the fast-paced fields of Machine Learning and Artificial Intelligence. The Blogposts Track offers a unique venue to discuss recent developments, research directions, and reflect on past work while offering accessible education.
 >Over the past years, the Blogposts Track has seen increasing engagement, reinforcing its role in supporting an open exchange of ideas within the machine learning community. By providing a platform for blog post publications, ICLR continues to support knowledge exchange in our research community.
 >Thanks to the growing interest in this format, the track received **96 submissions**, with **48** exceptional blog posts accepted after a double-blind review. These posts explore a variety of topics in machine learning, offering unique educational, critical, and reflective positions.
 >
