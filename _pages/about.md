@@ -1,6 +1,6 @@
 ---
 layout: about
-title: data-on-the-brain-and-mind
+title: about
 permalink: /about/
 nav: true
 nav_order: 1

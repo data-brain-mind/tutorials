@@ -2,21 +2,21 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: ICLR Blogposts 2025 # the website title (if blank, full name will be used instead)
-first_name: ICLR
+title: Data on the Brain & Mind Blogpost Track (NeurIPS 2025) 
+first_name: 
 middle_name: 
-last_name: Blog
+last_name: 
 email: 
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Home to the 2025 ICLR Blogposts track
+  Home to the Data on the Brain & Mind Blogposts (NeurIPS 2025) track
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: machine-learning, ml, deep-learning, reinforcement-learning, iclr  # add your own keywords or leave empty
+keywords: machine-learning, ml, deep-learning, reinforcement-learning # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: iclr_favicon.ico  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: brain-icon.svg  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://Mahsa-Bastankhah.github.io # the base hostname & protocol for your site
 baseurl: /test # the subpath of your site, e.g. /blog/
