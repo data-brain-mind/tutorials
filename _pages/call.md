@@ -42,7 +42,7 @@ Authors must declare conflicts, including:
 
 ### Publication & Poster Option
 
-Accepted posts will be rendered in a unified template (see our [submission instructions]({{ '/submitting' | relative_url }})) and showcased in a **virtual poster session** during NeurIPS 2025.
+Accepted posts will be rendered in a unified template (see our [submission instructions]({{ '/submitting' | relative_url }})) and showcased in a **poster session** during the workshop.
 
 ---
 

@@ -54,7 +54,7 @@ We invite posts that, for example:
 - Offer critical reflections on data quirks or lessons learned  
 - Describe collaborative tooling across ML, neuroscience, and cognitive science
 
-**Accepted posts** will appear on the workshop site and feature in a **virtual poster session** at NeurIPS 2025.
+**Accepted posts** will appear on the workshop blog and feature in a **poster session** at the workshop.
 
 ---
 
@@ -62,10 +62,10 @@ We invite posts that, for example:
 
 
 
- Submission Deadline:   22 August 2025 23:59
+ Submission Deadline:   22 August 2025, 23:59
 
 
-Submissions are handled via GitHub + OpenReview.
+Submissions are handled via GitHub + OpenReview. For information about the submission refer to [Submission Instructions]({{ '/submitting/' | relative_url }}).
 
 ---
 
