@@ -44,11 +44,6 @@ Large‑scale, open datasets now span:
 
 These data are far from standard ML benchmarks; they include time series, images, videos, text, and complex graph structures, each with distinctive meta‑information (e.g., MEG electrode coordinates). Blog posts should demystify such datasets, share best practices, and highlight tailored AI solutions beyond one‑size‑fits‑all models.
 
-### Workshop‑Driven Aims for Blogposts
-
-1. **Identify Open Problems** — What neuroscience or cognitive‑science questions can these datasets answer?  
-2. **Advance ML Methods** — How can AI/ML techniques collect, analyze, and interpret these data?  
-3. **Foster Collaboration** — How can interdisciplinary teams build shared tools for data‑model integration and interpretability?
 
 ---
 
@@ -67,20 +62,16 @@ We invite posts that, for example:
 
 ## Key Dates (Blogposts Track)
 
-| Milestone                | Date & Time (AOE) |
-|--------------------------|-------------------|
-| **Submission Deadline**  | **22 August 2025 23:59** |
+
+
+ Submission Deadline:   22 August 2025 23:59
 
 
 Submissions are handled via GitHub + OpenReview.
 
 ---
 
-For Blogposts Track questions, open a GitHub issue (link forthcoming) or email  
-<a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
 
-
----
 
 ## Contact
 
