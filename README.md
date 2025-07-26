@@ -1,6 +1,6 @@
 # Data on the Brain and Mind Blogpost Track (NeurIPS 2025)
 
-This is the repository for the blogposts track. This website is based off of the [**ICLR blogpost track 2025 **](https://github.com/iclr-blogposts/2025)reporsitory which is itself built on [**al-folio**](https://github.com/alshedivat/al-folio) template.
+This is the repository for the blogpost track. This website is based off of the [**ICLR blogpost track 2025**](https://github.com/iclr-blogposts/2025)reporsitory, which is itself built on [**al-folio**](https://github.com/alshedivat/al-folio) template.
 Some of their original documentation for using this template is included below, but you can find their full README in the original repo.
 
 ### Links
