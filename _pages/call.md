@@ -9,7 +9,7 @@ nav_order: 2
 
 # Key Dates
 - **Abstract & Submission deadline**: August 22nd 23:59 AOE, 2025 
-  - [Submit to OpenReview](https://openreview.net/group?id=ICLR.cc/2025/BlogPosts)
+  - [Submit to OpenReview]()
   - Any modifications to your blog post, via a pull request on github
 - **Notification of acceptance**: September 22, 2025
 - **Camera-ready merge**: October 8, 2025 (AoE)
@@ -48,5 +48,5 @@ Accepted posts will be rendered in a unified template (see our [submission instr
 
 ### Contact
 
-Questions? Open a GitHub issue (link forthcoming) or email  
+Questions? [Open a GitHub issue](https://github.com/data-brain-mind/blogpost-track/issues) or email  
 <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.

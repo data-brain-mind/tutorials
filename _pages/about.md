@@ -73,7 +73,7 @@ Submissions are handled via GitHub + OpenReview. For information about the s
 
 ## Contact
 
-For Blogposts Track questions or technical issues, open an issue in our GitHub repo (link forthcoming) or email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
+For Blogposts Track questions or technical issues, [Open a GitHub issue](https://github.com/data-brain-mind/blogpost-track/issues)  or email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
 
 ---
 
