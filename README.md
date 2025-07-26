@@ -1,22 +1,24 @@
-# ICLR 2025 Blogposts Track
+# Data on the Brain and Mind Blogposts Track (NeurIPS 2025)
 
-This is the repository for the blogposts track. This website is based off of the [**al-folio**](https://github.com/alshedivat/al-folio) template.
+This is the repository for the blogposts track. This website is based off of the [**ICLR blogpost track 2025 **](https://github.com/iclr-blogposts/2025)reporsitory which is itself built on [**al-folio**](https://github.com/alshedivat/al-folio) template.
 Some of their original documentation for using this template is included below, but you can find their full README in the original repo.
 
 ### Links
 
-Call for blog posts: https://iclr-blogposts.github.io/2025/call
+Data on the Brain and Mind workshop: https://data-brain-mind.github.io
 
-About: https://iclr-blogposts.github.io/2025/about
+Call for blog posts: https://data-brain-mind.github.io/blogpost-track/call/
 
-Submission guide: https://iclr-blogposts.github.io/2025/submitting
+About the blogpost track: https://data-brain-mind.github.io/blogpost-track/about/
 
-### Track Chairs
+Submission guide: https://data-brain-mind.github.io/blogpost-track/submitting
+
+<!-- ### Track Chairs
 
 - Leo Schwinn, Technical University of Munich
 - Nicholas Gao, Technical University of Munich
 - Sophie Xhonneux, Mila, Université de Montréal
-- David Dobre, Mila, Université de Montréal
+- David Dobre, Mila, Université de Montréal -->
 
 &nbsp;
 

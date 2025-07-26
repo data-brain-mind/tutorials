@@ -54,7 +54,7 @@ This section provides a summary of the workflow for creating and submitting a bl
 For more details about any of these steps, please refer to the appropriate section.
 
 
-1. Fork or download our [repository](https://github.com/iclr-blogposts/2025). 
+1. Fork or download our [repository](https://github.com/data-brain-mind/blogpost-track#). 
 
 2. Create your blog post content as detailed in the [Creating a Blog Post](#creating-a-blog-post) section.
     In summary, to create your post, you will: 
@@ -78,11 +78,11 @@ For more details about any of these steps, please refer to the appropriate secti
 
 **Should you edit ANY files other your new post inside the `_posts` directory, and your new folder inside the `assets` directory, your pull requests will automatically be rejected.**
 
-You can view an example of a successful PR [here](https://github.com/iclr-blogposts/2025/pull/48). You can view an example of a PR with erroneous files [here](https://github.com/iclr-blogposts/2025/pull/51).
+<!-- You can view an example of a successful PR [here](https://github.com/iclr-blogposts/2025/pull/48). You can view an example of a PR with erroneous files [here](https://github.com/iclr-blogposts/2025/pull/51). -->
 
 ### Download the Blog Repository
 
-Download or fork our [repository](https://github.com/iclr-blogposts/2025). 
+Download or fork our [repository](https://github.com/data-brain-mind/blogpost-track#). 
 You will be submitting a pull request this repository.
 
 ### Creating a Blog Post
@@ -222,9 +222,9 @@ your_blogpost_repo/
 So far we've talked about how to get the relevant repository and create a blog post conforming to our requirements.
 Everything you have done so far has been in Markdown, but this is not the same format as web content (typically HTML, etc.).
 You'll now need to build your static web site (which is done using Jekyll), and then *serve* it on some local webserver in order to view it properly.
-We will now discuss how you can *serve* your blog site locally, so you can visualize your work before you open a pull request on the staging website so you can submit it to the ICLR venue.
+We will now discuss how you can *serve* your blog site locally, so you can visualize your work before you open a pull request on the staging website so you can submit it to the Data on Brain and Mind workshop.
 
-#### Method 1: Using Docker 
+<!-- #### Method 1: Using Docker 
 
 To render your website locally, we follow the instructions for [Local setup using Docker (Recommended on Windows)](https://github.com/iclr-blogposts/iclr-blogposts.github.io/blob/master/README.md#local-setup-using-docker-recommended-on-windows), but specifically you will need to create your own docker container rather than pull it from Dockerhub (because we modified the Gemfile).
 
@@ -236,12 +236,12 @@ Create and run the Docker image:
 
 Remove the `Gemfile.lock` file if prompted.
 This will create a docker image labeled as `al-folio:latest`. 
-Don't use `dockerhub_run.sh`; this may result in issues with missing jekyll dependencies.
+Don't use `dockerhub_run.sh`; this may result in issues with missing jekyll dependencies. -->
 
 
-#### Method 2: Using Jekyll Manually
+#### Using Jekyll Manually
 
-For users wishing to not use a Docker container, you can install Jekyll directly to your computer and build the site using Jekyll directly.
+You can install Jekyll directly to your computer and build the site using Jekyll directly.
 This is done at your own risk, as there are many potential points of error!
 Follow the instructions for rendering the website via the conventional method of `$ bundle exec jekyll serve --future`
 
@@ -332,10 +332,10 @@ To submit your blog post:
         - static image assets added to `assets/img/2025-04-28-[SUBMISSION NAME]/`
         - interactive HTML figures added  to `assets/html/2025-04-28-[SUBMISSION NAME]/`
         - citations in a bibtex file in `assets/bibliography/2025-04-28-[SUBMISSION NAME].bib`
-    - Have a short 2-3 sentence abstract in the `description` field of your front-matter ([example](https://github.com/iclr-blogposts/2025/blob/295ab5b4c31f2c7d421a4caf41e5481cbb4ad42c/_posts/2025-04-28-distill-example.md?plain=1#L4-L6))
-    - Have a table of contents, formatted using the `toc` field of your front-matter ([example](https://github.com/iclr-blogposts/2025/blob/295ab5b4c31f2c7d421a4caf41e5481cbb4ad42c/_posts/2025-04-28-distill-example.md?plain=1#L36-L47))
+    - Have a short 2-3 sentence abstract in the `description` field of your front-matter.
+    - Have a table of contents, formatted using the `toc` field of your front-matter.
     - Your bibliography uses a `.bibtex` file as per the sample post
-3. Open a pull request against the `main` branch of the [2025 repo](https://github.com/iclr-blogposts/2025). 
+3. Open a pull request against the `main` branch of the [repo](https://github.com/data-brain-mind/blogpost-track). 
   Fill in the checklist provided in the PR template. The title of your pull request should be 
   exactly the name of your markdown/html file.
     - i.e. `_posts/2025-04-28-[SUBMISSION NAME].md` would require a PR name `2025-04-28-[SUBMISSION NAME]` 
@@ -345,7 +345,7 @@ To submit your blog post:
     - If the pipelines failed, check if it was because of improper formatting (i.e. you modified 
       restricted files). If this is the case, fix the issues. If the issue persist, please ping one of the repo admins.
       
-5. Submit the name of your blog post and its URL to our OpenReview through [this link](https://openreview.net/group?id=ICLR.cc/2025/BlogPosts&referrer=%5BHomepage%5D(%2F)).
+5. Submit the name of your blog post and its URL to our OpenReview through [this link]().
 
 > **Note:** If you wish to make updates to your submission, you should update the content in the 
 > PR that you already opened. 
