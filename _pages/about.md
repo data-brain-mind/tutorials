@@ -16,14 +16,12 @@ selected_papers: false
 social: false
 ---
 
-# Data on the Brain & Mind  
+# Data on the Brain & Mind Workshop - Blogposts Track
 **Concrete Applications of AI to Neuroscience and Cognitive Science**  
 NeurIPS 2025 · San Diego, CA  
 Contact: <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>
 
 ---
-
-# Blogposts Track — Data on the Brain & Mind
 
 > **This page covers the Blogposts Track only.**  
 > For the main workshop information (organizers, speakers, schedule, key dates, etc.) please visit:  
