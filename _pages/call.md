@@ -8,9 +8,8 @@ nav_order: 2
 ---
 
 # Key Dates
-- **Abstract & Submission deadline**: August 22nd 23:59 AOE, 2025 
+- **Abstract & Submission deadline**: September 4, 2025, 23:59 (AoE)
   - [Submit to OpenReview]()
-  - Any modifications to your blog post, via a pull request on github
 - **Notification of acceptance**: September 22, 2025
 - **Camera-ready merge**: October 8, 2025 (AoE)
 
@@ -24,6 +23,8 @@ We invite researchers and practitioners to contribute **tutorial‑style, educat
 3. **Critical Reflections** – lessons learned, data quirks, pitfalls, or reproducibility tips specific to heterogeneous neuro data.  
 4. **New Perspectives** – conceptual or theoretical insights that spark interdisciplinary dialogue.  
 5. **Negative or Null Results** – cool ideas that didn’t pan out (and why), so others can learn.
+
+All tutorials **must** publicly share the dataset they use.
 
 If you’re unsure whether your idea fits, email us at  
 <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
@@ -48,5 +49,4 @@ Accepted posts will be rendered in a unified template (see our [submission instr
 
 ### Contact
 
-Questions? [Open a GitHub issue](https://github.com/data-brain-mind/blogpost-track/issues) or email  
-<a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
+For Blogposts Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.

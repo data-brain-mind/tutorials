@@ -19,7 +19,10 @@ social: false
 # Data on the Brain & Mind Workshop - Blogposts Track
 **Concrete Applications of AI to Neuroscience and Cognitive Science**  
 NeurIPS 2025 · San Diego, CA  
+
 Contact: <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>
+
+Blogpost track technical support: <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>
 
 ---
 
@@ -54,6 +57,7 @@ We invite posts that, for example:
 - Offer critical reflections on data quirks or lessons learned  
 - Describe collaborative tooling across ML, neuroscience, and cognitive science
 
+All tutorials **must** publicly share the dataset they use.
 **Accepted posts** will appear on the workshop blog and feature in a **poster session** at the workshop.
 
 ---
@@ -62,10 +66,10 @@ We invite posts that, for example:
 
 
 
- Submission Deadline:   22 August 2025, 23:59
+Submission Deadline: September 4, 2025, 23:59 (AoE)
 
 
-Submissions are handled via GitHub + OpenReview. For information about the submission refer to [Submission Instructions]({{ '/submitting/' | relative_url }}).
+Submissions are handled via OpenReview. For information about the submission refer to [Submission Instructions]({{ '/submitting/' | relative_url }}).
 
 ---
 
@@ -73,7 +77,7 @@ Submissions are handled via GitHub + OpenReview. For information about the s
 
 ## Contact
 
-For Blogposts Track questions or technical issues, [Open a GitHub issue](https://github.com/data-brain-mind/blogpost-track/issues)  or email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
+For Blogposts Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
 
 ---
 
