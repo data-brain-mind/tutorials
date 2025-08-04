@@ -6,7 +6,6 @@ description:
 nav: true
 nav_order: 3
 ---
-s
 
 ### Creating a Tutorial in Markdown
 
@@ -46,7 +45,7 @@ The Markdown file will be rendered and displayed on the blog page, along with a 
 
 ---
 
-Upon submission, we will review and render accepted tutorials on our [Tutorial Track blog page](/tutorial-track/blog/index.html).
+Upon submission, we will review and render accepted tutorials on our [Tutorial Track blog page](/blogpost-track/blog/index.html).
 
 Our template is based on the [ICLR Blogposts 2025](https://iclr-blogposts.github.io/2025/about/) project.  
 You can browse additional examples in their GitHub repository:  
