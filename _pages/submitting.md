@@ -10,7 +10,7 @@ nav_order: 3
 ### Creating a Tutorial in Markdown
 
 
-To create your tutorial in Markdown format, you can use [this example post](https://github.com/data-brain-mind/blogpost-track/blob/main/_posts/2025-04-28-distill-example.md) as a template. You can view the rendered version of the same post on our website [here]({% post_url 2025-04-28-distill-example %}).
+To create your tutorial in Markdown format, you can use [this example post](https://github.com/data-brain-mind/tutorials/blob/main/_posts/2025-04-28-distill-example.md) as a template. You can view the rendered version of the same post on our website [here]({% post_url 2025-04-28-distill-example %}).
 
 
 Read our [sample blog post]({% post_url 2025-04-28-distill-example %}) carefully to see how you can add image assets, and how to write using $$\LaTeX$$!
@@ -45,7 +45,7 @@ The Markdown file will be rendered and displayed on the blog page, along with a 
 
 ---
 
-Upon submission, we will review and render accepted tutorials on our [Tutorial Track blog page](/blogpost-track/blog/index.html).
+Upon submission, we will review and render accepted tutorials on our [Tutorial Track blog page](/tutorials/blog/index.html).
 
 Our template is based on the [ICLR Blogposts 2025](https://iclr-blogposts.github.io/2025/about/) project.  
 You can browse additional examples in their GitHub repository:  
