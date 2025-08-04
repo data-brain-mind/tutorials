@@ -73,7 +73,7 @@ You will be submitting a pull request this repository. -->
 To create your blog post in Markdown format, you can use [this example post](https://github.com/data-brain-mind/blogpost-track/blob/main/_posts/2025-04-28-distill-example.md) as a template. You can view the rendered version of the same post on our website [here]({% post_url 2025-04-28-distill-example %}).
 
 
-You must modify the file's header (or 'front-matter') as needed.
+<!-- You must modify the file's header (or 'front-matter') as needed.
 
 
 
@@ -124,7 +124,7 @@ toc:
 ```
 
 You must change the `title`, `discription`, `toc`, and eventually the `authors` fields (**ensure that the
-submission is anonymous for the review process**).
+submission is anonymous for the review process**). -->
 
 <!-- Add any tags that are relevant to your post, such as the areas your work is relevant to. -->
 Read our [sample blog post]({% post_url 2025-04-28-distill-example %}) carefully to see how you can add image assets, and how to write using $$\LaTeX$$!
@@ -132,21 +132,30 @@ Read our [sample blog post]({% post_url 2025-04-28-distill-example %}) carefully
 
 **Important: make sure your post is completely anonymized before you export and submit it!**
 
-### Submission Instructions Summary
+### Submission Instructions
+---
 
-To create your post, you will:
+**Submission should be completed through the [OpenReview submission form](https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/DBM/Tutorials&referrer=%5BHomepage%5D(%2F)#tab-your-consoles).**
 
-- Create a Markdown file with the format: `2025-04-28-[SUBMISSION-NAME].md`
-- Add any static image assets to a folder named: `/2025-04-28-[SUBMISSION-NAME]/`
-- Place your citations into a BibTeX file named: `2025-04-28-[SUBMISSION-NAME].bib`
-- Package all three items into a `.zip` folder and submit it to OpenReview
+To submit your tutorial, please follow these steps:
 
-> **Note:** `2025-04-28-[SUBMISSION-NAME]` acts as a unique tag for your submission. It should be consistent across all files.
+- **Markdown Content**: Enter your tutorial content into the **Markdown box** provided in the OpenReview submission form.
+- **Figures**: Upload any images or figures used in your Markdown so they display correctly.
+- **Code Links**: Include links to any relevant code (e.g., Jupyter notebooks or GitHub repositories). Be sure these links point to **anonymized** resources if required. These resources should demonstrate the core content of your tutorial.
 
-For example, if you're submitting a blog post titled *Deep Learning*, your tag would be:  
-`2025-04-28-deep-learning`
 
-If you prefer to prepare your tutorial in a Jupyter Notebook, you are welcome to submit an overview of your tutorial in a Markdown (`.md`) file, along with the `.ipynb` notebook file, in a `.zip` folder. We will render the Markdown file and include a reference to your notebook on the blog page.
+You can preview how your tutorial will appear using the **Preview** tab in the OpenReview submission interface.
+
+
+If you prefer to prepare your tutorial in a **Jupyter Notebook**, you may instead submit:
+
+- A short overview of your tutorial in a `.md` (Markdown) file.
+- A link to the corresponding `.ipynb` (notebook) file.
+
+The Markdown file will be rendered and displayed on the blog page, along with a reference to your notebook.
+
+
+
 
 ---
 
