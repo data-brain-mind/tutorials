@@ -16,17 +16,17 @@ selected_papers: false
 social: false
 ---
 
-# Data on the Brain & Mind Workshop - Blogposts Track
+# Data on the Brain & Mind Workshop - Tutorial Track
 **Concrete Applications of AI to Neuroscience and Cognitive Science**  
 NeurIPS 2025 · San Diego, CA  
 
 Contact: <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>
 
-Blogpost track technical support: <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>
+Tutorial track technical support: <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>
 
 ---
 
-> **This page covers the Blogposts Track only.**  
+> **This page covers the Tutorial Track only.**  
 > For the main workshop information (organizers, speakers, schedule, key dates, etc.) please visit:  
 > <https://data-brain-mind.github.io/>
 
@@ -34,7 +34,7 @@ Blogpost track technical support: <a href="mailto:mhs.bastankhah@princeton.edu">
 
 ## Overview
 
-The Blogposts Track complements our *Data on the Brain & Mind* workshop at NeurIPS 2025 by soliciting **tutorial‑style, educational blog posts** that help the community work with emerging, heterogeneous neuroscience and cognitive‑science datasets.
+The Tutorial Track complements our *Data on the Brain & Mind* workshop at NeurIPS 2025 by soliciting **tutorial‑style, educational tutorials** that help the community work with emerging, heterogeneous neuroscience and cognitive‑science datasets.
 
 Large‑scale, open datasets now span:
 
@@ -43,7 +43,7 @@ Large‑scale, open datasets now span:
 - **Human development:** BabyView  
 - **Natural speech processing:** MEG‑MASC  
 
-These data are far from standard ML benchmarks; they include time series, images, videos, text, and complex graph structures, each with distinctive meta‑information (e.g., MEG electrode coordinates). Blog posts should demystify such datasets, share best practices, and highlight tailored AI solutions beyond one‑size‑fits‑all models.
+These data are far from standard ML benchmarks; they include time series, images, videos, text, and complex graph structures, each with distinctive meta‑information (e.g., MEG electrode coordinates). Tutorials should demystify such datasets, share best practices, and highlight tailored AI solutions beyond one‑size‑fits‑all models.
 
 
 ---
@@ -62,7 +62,7 @@ All tutorials **must** publicly share the dataset they use.
 
 ---
 
-## Key Dates (Blogposts Track)
+## Key Dates (Tutorial Track)
 
 
 
@@ -77,7 +77,7 @@ Submissions are handled via <a href="https://openreview.net/group?id=NeurIPS.cc/
 
 ## Contact
 
-For Blogposts Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
+For Tutorial Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
 
 ---
 

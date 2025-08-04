@@ -1,6 +1,6 @@
 ---
 layout: page
-title: call for blogposts
+title: call for tutorial
 permalink: /call/
 description:
 nav: true
@@ -14,7 +14,7 @@ nav_order: 2
 - **Camera-ready merge**: October 8, 2025 (AoE)
 
 
-## Call for Blog Posts
+## Call for Tutorials
 
 We invite researchers and practitioners to contribute **tutorial‑style, educational posts** that support the *Data on the Brain & Mind* community. Suitable submissions include:
 
@@ -49,4 +49,4 @@ Accepted posts will be rendered in a unified template (see our [submission instr
 
 ### Contact
 
-For Blogposts Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
+For Tutorial Track questions or technical issues, email <a href="mailto:mhs.bastankhah@princeton.edu">mhs.bastankhah@princeton.edu</a>. For general questions about the workshop email us at <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
