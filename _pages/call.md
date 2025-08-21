@@ -26,6 +26,8 @@ We invite researchers and practitioners to contribute **tutorial‑style, educat
 
 All tutorials **must** publicly share the dataset they use.
 
+**Reciprocal Review:** To help ensure a fair and high-quality review process, we ask that each submission nominate at least one author to be available as a reviewer for the DBM workshop during September 9-19. It is sufficient if the nominated author has already signed up as a reviewer for the workshop.
+
 If you’re unsure whether your idea fits, email us at  
 <a href="mailto:data-brain-mind@googlegroups.com">data‑brain‑mind@googlegroups.com</a>.
 
