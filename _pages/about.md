@@ -66,7 +66,7 @@ All tutorials **must** publicly share the dataset they use.
 
 
 
-Submission Deadline: September 4, 2025, 23:59 (AoE)
+Submission Deadline (extended): September 8, 2025, 23:59 (AoE)
 
 
 Submissions are handled via <a href="https://openreview.net/group?id=NeurIPS.cc/2025/Workshop/DBM/Tutorials&referrer=%5BHomepage%5D(%2F)#tab-your-consoles">OpenReview</a>. For information about the submission refer to [Submission Instructions]({{ '/submitting/' | relative_url }}).
