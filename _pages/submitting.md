@@ -53,8 +53,35 @@ You can browse additional examples in their GitHub repository:
 
 
 
-### Camera-ready
+### Camera-Ready
 
-**TBD** - instructions will be provided closer to the submission deadline.
+After acceptance, you will be invited to submit a camera-ready version via GitHub Pull Request.
+
+**Scope of Permitted Changes:**
+
+Your camera-ready version must remain faithful to your accepted submission. You may ONLY:
+
+✅ **Permitted:**
+- De-anonymize (add author names, affiliations, URLs)
+- Minor improvements in clarity and presentation
+- Minor error corrections that do not modify the claims
+- Add aspects left out due to anonymity concerns
+- Improve formatting and figure quality
+- Add complete bibliography entries
+
+❌ **NOT Permitted** (requires retraction and resubmission):
+- New claims or significant changes to existing claims
+- **ANY changes to the author list**
+- Major revisions to the technical content
+- Changes that substantially alter what was reviewed
+
+**Process:**
+1. You will receive camera-ready instructions via email
+2. Fork the repository and locate your tutorial files
+3. Make permitted changes only
+4. Submit a Pull Request
+5. Maintainers will review and merge
+
+Detailed camera-ready instructions will be sent to accepted authors.
 
 ### Full guide coming soon!
