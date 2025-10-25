@@ -47,7 +47,7 @@ bibliography: 2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneo
 toc:
   - name: Introduction and motivation
     subsections:
-    - name: Neural decoding models: from science fiction to reality
+    - name: "Neural decoding models: From science fiction to reality"
     - name: Simulatenous EEG and eye-tracking for cognitive dataset
     - name: What are some challenges?
       subsections:
