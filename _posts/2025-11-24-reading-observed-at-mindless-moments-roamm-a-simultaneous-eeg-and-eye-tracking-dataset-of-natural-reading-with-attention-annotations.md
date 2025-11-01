@@ -111,7 +111,7 @@ Now let’s take a brief detour into psychology. Studying constructs like MW can
 #### 1.4.2 The ReMind paradigm
 So how did we solve this problem? I spent days reading research articles, and my own wandering mind made me reread passages over and over just to comprehend the material. Suddenly, it hit me: when we reread after getting lost, we are implicitly marking the parts of the text where our attention drifted. That observation inspired the ReMind paradigm, which estimates the onset and duration of MW episodes during reading by combining retrospective self-reports with eye-tracking. Participants indicate the words where they believe their mind started and stopped wandering for each episode. We then align these selections with gaze timestamps to estimate precise onset and offset times. 
 
-![intro_pic](assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/intro_pic.png)
+![intro_pic]({{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/intro_pic.png' | relative_url }})
 	*Figure created by Sora.*
 
 
@@ -124,12 +124,17 @@ In the remainder of the post, we present the ROAMM Dataset including the partici
 ### 2.1 Participants
 We recruited 58 participants from a university in the northeastern United State who were fluent in English and reported no family history of neurological disorders or epilepsy. All participants underwent screening and provided informed consent before participation. The study protocol was approved by the university Institutional Review Board. 14 participants were excluded due to issues such as equipment difficulties, incomplete experimental runs, monocular-only eye-tracking data, or missing demographic information. The final dataset includes **44 participants**. The participants' age ranged from 18 to 64 years (Mean = 22.6, SD = 7.8, Median = 20, Mode = 19). This indicates a relatively young but moderately varied sample. Our sample also includes labels for gender, handedness, and self-identified ADHD.  
 
-<img src="demographics.png" alt="demographics" style="zoom:45%;" />
+<img src="{{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/demographics.png' | relative_url }}" alt="demographics" style="zoom:45%;" />
 
 ### 2.2 The ReMind paradigm
-Participants read five articles selected from Wikipedia (2015): **Pluto** (the dwarf planet), **the Prisoner’s Dilemma**, **Serena Williams**, **the History of Film**, and **the Voynich Manuscript**. These topics were chosen to be unfamiliar yet comprehensible without prior background knowledge. Each article was standardized by removing images and jargon, then divided into 10 pages (≈220 words per page). Pages were rendered using a custom Python script into 16 lines of black Courier-font text on a gray background. To encourage engagement and assess comprehension, we created one multiple-choice question per page. Each question was designed to require attention to that page alone.  
+Participants read five articles selected from Wikipedia (2015): **Pluto** (the dwarf planet), **the Prisoner's Dilemma**, **Serena Williams**, **the History of Film**, and **the Voynich Manuscript**. These topics were chosen to be unfamiliar yet comprehensible without prior background knowledge. Each article was standardized by removing images and jargon, then divided into 10 pages (≈220 words per page). Pages were rendered using a custom Python script into 16 lines of black Courier-font text on a gray background. To encourage engagement and assess comprehension, we created one multiple-choice question per page. Each question was designed to require attention to that page alone.  
 
-![remind_task](assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/remind_task.png)
+![remind_task]({{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/remind_task.png' | relative_url }})
+
+The reading task was programmed using PsychoPy <d-cite key="Peirce2019"></d-cite>, a platform for developing psychological experiments. Each experimental session consisted of five runs, one for each article. Articles were presented in a randomized order. Before the first run, participants received task instructions and an explicit definition of mind-wandering (*see above figure*). Participants read at their own pace with no time limit per page but could not re-read previous pages. If they noticed themselves mind-wandering, they pressed the "F" key to access a dedicated reporting screen. There, they clicked on the words marking where they believed the MW episode began and ended (highlighted onscreen for clarity). If the episode began on the prior page, they marked the first word of the current page. After submitting the report, they returned to the same page to resume reading. For consistency, only one MW report was permitted per page.
+
+### 2.3 Data acquisition and preprocessing 
+#### 2.3.1 Eye-tracking
 
 The reading task was programmed using PsychoPy <d-cite key="Peirce2019"></d-cite>, a platform for developing psychological experiments. Each experimental session consisted of five runs, one for each article. Articles were presented in a randomized order. Before the first run, participants received task instructions and an explicit definition of mind-wandering (*see above figure*). Participants read at their own pace with no time limit per page but could not re-read previous pages. If they noticed themselves mind-wandering, they pressed the “F” key to access a dedicated reporting screen. There, they clicked on the words marking where they believed the MW episode began and ended (highlighted onscreen for clarity). If the episode began on the prior page, they marked the first word of the current page. After submitting the report, they returned to the same page to resume reading. For consistency, only one MW report was permitted per page. 
 
@@ -145,7 +150,7 @@ We recorded simultaneous EEG using a **BioSemi ActiveTwo 64-channel system** at 
 ### 2.4 Dataset format
 We made the ROAMM dataset easy to work with by aligning eye-tracking data to 64-channel EEG at 256 Hz. We downsampled the eye-tracking data using the real-time arrays: for each EEG time point, we identified the closest corresponding eye-tracking sample and used the pupil size at that moment. Fixations, saccades, and blinks were directly mapped using their start and end times relative to the EEG time array.
 
-All data are stored in pandas DataFrames (.pkl format, [{% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/figure_1.png" class="img-fluid" %}](https://www.python.org/downloads/)) for fast loading and smaller file size (compared to .csv format). Each participant has one .pkl file per run, with a total of 5 runs. Eye-tracking events like fixations, saccades, and blinks are expanded across their start-to-end times. For example, if a fixation occurs from 10 to 11 seconds, all samples within that 1-second window are annotated with `is_fixation = 1`, `fix_tStart = 10`, `fix_tEnd = 11`, `fix_duration = 1`, etc. Time stamps, page boundaries, and mind-wandering episodes are all included, along with metadata such as sampling frequency, run numbers, page numbers, and story names. 
+All data are stored in pandas DataFrames (.pkl format) for fast loading and smaller file size (compared to .csv format). Each participant has one .pkl file per run, with a total of 5 runs. Eye-tracking events like fixations, saccades, and blinks are expanded across their start-to-end times. For example, if a fixation occurs from 10 to 11 seconds, all samples within that 1-second window are annotated with `is_fixation = 1`, `fix_tStart = 10`, `fix_tEnd = 11`, `fix_duration = 1`, etc. Time stamps, page boundaries, and mind-wandering episodes are all included, along with metadata such as sampling frequency, run numbers, page numbers, and story names. 
 
 To maintain clarity and focus on natural reading, we defined **first-pass reading** as the period when participants were initially reading the text. Activities such as reading task instructions, marking mind-wandering pages, rereading after a mind-wandering report, or answering comprehension questions were excluded from this category. Each sample is labeled for first-pass reading, mind-wandering, and fixated words. Each fixated word also includes a key linking it to the original text, making it easy to generate embeddings or other vectorized representations within the context of the reading corpus for computational modeling. Additional information, including **subject demographic information** and **comprehension question scores** (with corresponding  run and page numbers), and **EEG channel locations** is saved in separate files for easy access.
 
@@ -172,29 +177,29 @@ The ROAMM dataset is large and rich. It contains over 46 million recorded sample
 
 The histograms below illustrate the distribution of data across participants for each attribute in the ROAMM dataset. While all participants contributed, individual differences are evident in the distributions. This highlights the real-world variability in human data and underscores the importance of carefully considering modeling approaches, whether developing a general model across participants or an individualized classifier tailored to each person. 
 
-<img src="data_scale.png" alt="data_scale" style="zoom:20%;" />
+<img src="{{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/data_scale.png' | relative_url }}" alt="data_scale" style="zoom:20%;" />
 
 ### 2.6 Data validation
 We validated the ROAMM dataset to ensure high recording quality, precise alignment between EEG and eye-tracking data streams, accurate fixation-to-word mappings, and reliable labeling of MW episodes. 
 #### 2.6.1 EEG and eye-tracking recoding quality
 To assess recording quality, we inspected EEG and eye-tracking signals in parallel. As demonstrated below using a randomly selected 10-second window, preprocessed EEG from selected channels show **clean activity with minimal muscle and eye artifacts**. Eye-tracking features behave as expected: **fixations are followed by saccades, blinks appeared distinctly**, and **gaze position traces reveal typical reading patterns**. Specifically, x-coordinates increase left to right across each line, while y-coordinates step down across successive lines, confirming naturalistic line-by-line reading. 
 
-![eeg_eye_valid](assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eeg_eye_valid.png)
+![eeg_eye_valid]({{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eeg_eye_valid.png' | relative_url }})
 
 #### 2.6.2 EEG and eye-tracking alignment
 Next, we validated alignment between EEG and eye-tracking streams. Using the unfold toolbox, we deconvolved fixation-related potentials (FRPs) during periods of reading without MW. **The resulting FRPs and P1 topography replicated patterns reported using the ZuCo 2.0 dataset** <d-cite key="Hollenstein2019"></d-cite>, providing strong evidence for the temporal precision of our co-registered recordings. 
 
-![frp](assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/frp.png)
+![frp]({{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/frp.png' | relative_url }})
 
 #### 2.6.3 Fixation-to-word mapping
 We also validated fixation-to-word mappings by plotting gaze traces directly on reading pages. In one example, a participant read mindfully without reporting MW; in another, the same participant reported an MW episode. Onset and offset words of the MW episode were highlighted in red, while fixations appeared as colored dots. Larger dots indicated longer durations, and a purple-to-yellow gradient reflected temporal order. Fixations within MW episodes were additionally center-colored in red, and consecutive fixations were linked by red lines to mark saccades. **All fixations aligned neatly with words, and the gaze traces showed clear left-to-right reading flows, confirming the accuracy of fixation-to-word mapping.** 
 
-![reading_page_full](assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/reading_page_full.png)
+![reading_page_full]({{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/reading_page_full.png' | relative_url }})
 
 #### 2.6.4 Reliable MW onset
 Finally, we validated MW onset labeling. In a paper currently under review, we demonstrated that incorporating MW onset information significantly improves the performance of linear regression classifiers trained to detect MW from eye-tracking features. A sliding-window analysis not only replicated prior findings of reduced fixation rates during MW episodes <d-cite key="Reichle2010"></d-cite>, but also revealed that these changes begin precisely at the reported MW onset. These findings demonstrate that the **ReMind paradigm provides a powerful framework for capturing MW onset and its progression over time**, ensuring that our attention state annotations are precise and grounded in reliable MW onset information. 
 
-<img src="eye_mwonset.png" alt="eye_mwonset" style="zoom:40%;" />
+<img src="{{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eye_mwonset.png' | relative_url }}" alt="eye_mwonset" style="zoom:40%;" />
 
 ### 2.7 Data accessibility and availability
 The processed datasets are publicly available on the [OSF](https://osf.io/kmvgb/?view_only=688b268d5b784ff39eba5b73bc10171e). Due to their large size, raw datasets are not hosted online but are available upon request. All preprocessing scripts used to generate the processed datasets are available in the [GitHub repository](https://anonymous.4open.science/r/ROAMM-6E8C/README.md). 
@@ -267,7 +272,7 @@ for subject_id in all_subjects:
 
 The ROAMM dataset is rich in scope, combining multiple valuable modalities: **eye-tracking** (gaze position and pupil size), **brain signals** (i.e., EEG), **human attention states**, and **linguistic content** (the reading text itself). This multimodal design provides countless opportunities for machine learning practitioners to explore how these signals interact. Below, we highlight 4 open questions that showcase the potential of ROAMM for advancing both cognitive science and computational modeling.
 
-<img src="roamm_modalities.png" alt="roamm_modalities" style="zoom:40%;" />
+<img src="{{ '/assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/roamm_modalities.png' | relative_url }}" alt="roamm_modalities" style="zoom:40%;" />
 
 ### 3.1 Learn shared representation from EEG and eye-tracking
 <blockquote>

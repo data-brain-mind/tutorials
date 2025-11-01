@@ -45,3 +45,5 @@ This tutorial introduces **NLDisco** (**N**eural **L**atent **Disco**very pipeli
 - Train sparse autoencoders on neural spike data to automatically discover interpretable features
 - Use Matryoshka architecture to capture both broad and specific neural patterns simultaneously
 - Validate discoveries through an interactive dashboard that visualizes feature-behavior relationships
+
+ **Code:** [NLDisco Tutorial Notebook](https://anonymous.4open.science/r/nldisco-CB03/notebooks/NLDisco_tutorial.ipynb)
