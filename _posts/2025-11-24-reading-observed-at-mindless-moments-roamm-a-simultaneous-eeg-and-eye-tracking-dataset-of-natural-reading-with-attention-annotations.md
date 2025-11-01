@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Reading Observed At Mindless Moments (ROAMM): A Simultaneous EEG and Eye-Tracking Dataset of Natural Reading with Attention Annotations"
-description: ROAMM (Reading Observed At Mindless Moments) is a large-scale multimodal dataset of EEG and eye-tracking data during naturalistic reading, with precise annotations of mind-wandering episodes.
+description: ROAMM (Reading Observed At Mindless Moments) is a large-scale multimodal dataset of EEG and eye-tracking data during naturalistic reading, with precise annotations of mind-wandering episodes to advance research in attention, language, and machine learning.
 date: 2025-11-24
 future: true
 htmlwidgets: true
@@ -91,9 +91,6 @@ toc:
 #     /* your styles here */
 #   }
 ---
-
-## TL;DR
-**ROAMM (Reading Observed At Mindless Moments) is a large-scale multimodal dataset of EEG and eye-tracking data during naturalistic reading, with precise annotations of mind-wandering episodes to advance research in attention, language, and machine learning.**
 
 ## Introduction and motivation 
 ### Neural decoding models: from science fiction to reality
