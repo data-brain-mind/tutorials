@@ -3,8 +3,8 @@ Instructions of GitHub Workflow (Option 2\)
 Step 1\. Reference Template
 
 * **Live example:** [https://data-brain-mind.github.io/tutorials/blog/2025/distill-example/](https://data-brain-mind.github.io/tutorials/blog/2025/distill-example/)  
-* **Source file:** [https://github.com/data-brain-mind/tutorials/blob/main/_posts/2025-04-28-distill-example.md](https://github.com/data-brain-mind/tutorials/blob/main/_posts/2025-04-28-distill-example.md)
-* **Bibliography:** [https://github.com/data-brain-mind/tutorials/blob/main/assets/bibliography/2025-04-28-distill-example.bib](https://github.com/data-brain-mind/tutorials/blob/main/assets/bibliography/2025-04-28-distill-example.bib)
+* **Source file:** \_posts/2025-04-28-distill-example.md  
+* **Bibliography:** assets/bibliography/2025-04-28-distill-example.bib
 
 This example illustrates:
 
@@ -16,11 +16,11 @@ This example illustrates:
 
 Step 2\. Locate Your Tutorial Files
 
-You may modify **only** the following files/folders:
+You may modify **only** the following files:
 
-* `_posts/YYYY-MM-DD-your-blog-title.md`  
-* `assets/img/YYYY-MM-DD-your-blog-title/`  
-* `assets/bibliography/YYYY-MM-DD-your-blog-title.bib`
+* \_posts/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai.md  
+* assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/  
+* assets/bibliography/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai.bib
 
 Step 3\. Test Locally (optional)
 
