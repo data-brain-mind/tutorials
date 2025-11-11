@@ -2,73 +2,6 @@
 <!-- _layouts/distill.html -->
 <html>
 
-<script>
-  let thunk = () => {
-    let trimIt = (e) => e.trim();
-    let getText = (e) => e.innerText;
-    let splitNameAndFamilyName = (e) => {
-      let splitted = e.split(" ");
-
-      let fnames = splitted.slice(0, -1).join(" ");
-      let lname = splitted.at(-1);
-
-      return [lname, fnames];
-    }
-
-    let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
-    let firstAuthorLName = authors[0][0];
-    let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
-
-    // getting stuff directly from Jekyll
-    let publishedWhen = "{{ page.date | date: '%B %-d, %Y' }}";
-    let title = "{{ page.title }}";
-    let description = "{{ page.description }}";
-
-    {
-      let authorsBibtex = authors.map(e => `${e[0]}, ${e[1]}`).join(" and ");
-      let bibtexTitleShorthand = (firstAuthorLName +
-              "2025" +
-              title.split(" ").slice(0, 3).join("")
-      ).replace(" ", "").replace(/[\p{P}$+<=>^`|~]/gu, '').toLowerCase().trim();
-      let bibtexTemplate = `
-@inproceedings{${bibtexTitleShorthand},
-  author = {${authorsBibtex}},
-  title = {${title}},
-  abstract = {${description}},
-  booktitle = {NeurIPS 2025 Workshop on "Data on the Brain \& Mind" Tutorials Track},
-  year = {2025},
-  date = {${publishedWhen}},
-  note = {${window.location.href}},
-  url  = {${window.location.href}}
-}
-  `.trim();
-      document.getElementById("bibtex-box").innerText = bibtexTemplate;
-    }
-
-    {
-      let academicLFI = authors.map(e => e[0]);
-      {
-        if (academicLFI.length > 2) academicLFI = academicLFI[0] + ", et al.";
-        else if (academicLFI.length == 2) academicLFI = academicLFI[0] + " & " + academicLFI[1];
-        else academicLFI = academicLFI[0];
-      }
-      let academicTemplate = `
-${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" Tutorials Track, 2025.
-`.trim();
-      document.getElementById("bibtex-academic-attribution").innerText = academicTemplate;
-    }
-  };
-
-  document.addEventListener('readystatechange', function(event) {
-    if (document.readyState === "complete") {
-      thunk();
-    }
-  });
-
-
-
-</script>
-
   <head>
     {%- include head.html %}
 
@@ -189,7 +122,66 @@ ${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" 
         crossorigin="anonymous"
         async>
 </script>
-    
+
+    <script>
+      // Wait for Distill.js to process everything
+      window.addEventListener('load', () => {
+        let trimIt = (e) => e.trim();
+        let getText = (e) => e.innerText;
+        let splitNameAndFamilyName = (e) => {
+          let splitted = e.split(" ");
+
+          let fnames = splitted.slice(0, -1).join(" ");
+          let lname = splitted.at(-1);
+
+          return [lname, fnames];
+        }
+
+        let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
+        let firstAuthorLName = authors[0][0];
+        let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
+
+        // getting stuff directly from Jekyll
+        let publishedWhen = "{{ page.date | date: '%B %-d, %Y' }}";
+        let title = "{{ page.title }}";
+        let description = "{{ page.description }}";
+
+        {
+          let authorsBibtex = authors.map(e => `${e[0]}, ${e[1]}`).join(" and ");
+          let bibtexTitleShorthand = (firstAuthorLName +
+                  "2025" +
+                  title.split(" ").slice(0, 3).join("")
+          ).replace(" ", "").replace(/[\p{P}$+<=>^`|~]/gu, '').toLowerCase().trim();
+          let bibtexTemplate = `
+@inproceedings{${bibtexTitleShorthand},
+  author = {${authorsBibtex}},
+  title = {${title}},
+  abstract = {${description}},
+  booktitle = {NeurIPS 2025 Workshop on "Data on the Brain \\& Mind" Tutorials Track},
+  year = {2025},
+  date = {${publishedWhen}},
+  note = {${window.location.href}},
+  url  = {${window.location.href}}
+}
+  `.trim();
+          document.getElementById("bibtex-box").innerText = bibtexTemplate;
+        }
+
+        {
+          let academicLFI = authors.map(e => e[0]);
+          {
+            if (academicLFI.length > 2) academicLFI = academicLFI[0] + ", et al.";
+            else if (academicLFI.length == 2) academicLFI = academicLFI[0] + " & " + academicLFI[1];
+            else academicLFI = academicLFI[0];
+          }
+          let academicTemplate = `
+${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" Tutorials Track, 2025.
+`.trim();
+          document.getElementById("bibtex-academic-attribution").innerText = academicTemplate;
+        }
+      });
+    </script>
+
     {% include scripts/bootstrap.html %}
     {% include scripts/analytics.html %}
   </body>
