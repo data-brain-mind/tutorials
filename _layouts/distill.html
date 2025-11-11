@@ -59,13 +59,13 @@ ${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" 
     }
   };
 
-  document.addEventListener('readystatechange', function(event) {
-    if (document.readyState === "complete") {
-      thunk();
-    }
-  });
-
-
+  // Run as soon as DOM is ready, don't wait for all resources
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', thunk);
+  } else {
+    // DOM is already ready
+    thunk();
+  }
 
 </script>
 
@@ -157,6 +157,8 @@ ${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" 
         </d-contents>
         {%- endif %}
 
+        <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
+
         {{ content }}
       </d-article>
 
@@ -166,8 +168,6 @@ ${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" 
       </d-appendix>
 
     </div>
-
-    <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
 
     <d-article id="bibtex-container" class="related highlight">
       For attribution in academic contexts, please cite this work as

@@ -1,25 +1,61 @@
-# Contributing to al-folio
-Thank you for considering to contribute to al-folio!
+Instructions of GitHub Workflow (Option 2\)
 
+Step 1\. Reference Template
 
-## Pull Requests
-We welcome your pull requests (PRs).
-For minor fixes (e.g., documentation improvements), feel free to submit a PR directly.
-If you would like to implement a new feature or a bug, please make sure you (or someone else) has opened an appropriate issue first; in your PR, please mention the issue it addresses.
+* **Live example:** [https://data-brain-mind.github.io/tutorials/blog/2025/distill-example/](https://data-brain-mind.github.io/tutorials/blog/2025/distill-example/)  
+* **Source file:** [https://github.com/data-brain-mind/tutorials/blob/main/_posts/2025-04-28-distill-example.md](https://github.com/data-brain-mind/tutorials/blob/main/_posts/2025-04-28-distill-example.md)
+* **Bibliography:** [https://github.com/data-brain-mind/tutorials/blob/main/assets/bibliography/2025-04-28-distill-example.bib](https://github.com/data-brain-mind/tutorials/blob/main/assets/bibliography/2025-04-28-distill-example.bib)
 
+This example illustrates:
 
-## Issues
-We use GitHub issues to track bugs and feature requests.
-Before submitting an issue, please make sure:
+* Proper frontmatter (title, authors, affiliations)  
+* Section structure and table of contents  
+* Figure inclusion with {% include figure.html ... %}  
+* Citation format with \<d-cite key="..."\>\</d-cite\>  
+* Code block and equation formatting
 
-1. You have read [the FAQ section](https://github.com/alshedivat/al-folio#faq) of the README and your question is NOT addressed there.
-2. You have done your best to ensure that your issue is NOT a duplicate of one of [the previous issues](https://github.com/alshedivat/al-folio/issues).
-3. Your issue is either a bug (unexpected/undesirable behavior) or a feature request.
-If it is just a question, please ask it in the [Discussions](https://github.com/alshedivat/al-folio/discussions) forum.
+Step 2\. Locate Your Tutorial Files
 
-When submitting an issue, please make sure to use the appropriate template.
+You may modify **only** the following files/folders:
 
+* `_posts/YYYY-MM-DD-your-blog-title.md`  
+* `assets/img/YYYY-MM-DD-your-blog-title/`  
+* `assets/bibliography/YYYY-MM-DD-your-blog-title.bib`
 
-## License
-By contributing to al-folio, you agree that your contributions will be licensed
-under the LICENSE file in the root directory of the source tree.
+Step 3\. Test Locally (optional)
+
+./bin/docker\_run.sh
+
+\# Or:
+
+bundle exec jekyll serve \--future
+
+Then open [http://localhost:4000/tutorials/](http://localhost:4000/tutorials/) to preview your post.
+
+For more information, refer to [this instruction](https://github.com/data-brain-mind/tutorials).
+
+Step 4\. Create and Submit a Pull Request
+
+git checkout \-b camera-ready-2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai
+
+git add .
+
+git commit \-m "Camera-ready version for Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI"
+
+git push origin camera-ready-2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai
+
+Then open a pull request:
+
+* Go to [https://github.com/YOUR-USERNAME/tutorials](https://github.com/YOUR-USERNAME/tutorials)  
+* Click **“Compare & pull request”**  
+* Set base repository to data-brain-mind/tutorials and base branch to main  
+* Title: *Camera-ready: Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI*  
+* Add a brief description of your updates  
+* Click **“Create pull request”**
+
+For more details, please see GitHub’s documentation:
+
+[Creating a pull request from a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+
+We look forward to receiving your camera-ready submission.
+
