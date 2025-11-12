@@ -32,7 +32,7 @@
           {%- if author.url and author.url != "" -%}
           ,"authorURL": "{{ author.url }}"
           {%- endif -%}
-          {%- if author.affiliations.name and author.affiliations.name != "" -%}
+          {%- if author.affiliations and author.affiliations.name and author.affiliations.name != "" -%}
           ,"affiliations": [
             {
               "name": "{{ author.affiliations.name }}"
