@@ -202,6 +202,7 @@ defaults:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
+  enabled: false  # Disabled: breaks Distill.js HTML structure
   exclude: ['robots.txt']
   uglifier_args:
     harmony: true
