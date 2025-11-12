@@ -140,6 +140,13 @@
         }
 
         let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
+
+        // Check if authors exist
+        if (!authors || authors.length === 0) {
+          console.warn("No authors found - citation generation skipped");
+          return;
+        }
+
         let firstAuthorLName = authors[0][0];
         let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
 
