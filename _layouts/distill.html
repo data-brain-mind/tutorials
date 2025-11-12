@@ -19,50 +19,50 @@
     {%- endif %}
   </head>
 
-  <d-front-matter>
-    <!--- <script async type="text/json">{ -->
-    <script type="text/json">{
-      "title": "{{ page.title }}",
-      "description": "{{ page.description }}",
-      "published": "{{ page.date | date: '%B %-d, %Y' }}",
-      "authors": [
-        {% for author in page.authors -%}
-        {
-          "author": "{{ author.name }}"
-          {%- if author.url and author.url != "" -%}
-          ,"authorURL": "{{ author.url }}"
-          {%- endif -%}
-          {%- if author.affiliations and author.affiliations.name and author.affiliations.name != "" -%}
-          ,"affiliations": [
+  <body class="{%- if site.navbar_fixed -%}fixed-top-nav{%- endif -%} {%- unless site.footer_fixed -%}sticky-bottom-footer{%- endunless -%}">
+
+    <d-front-matter>
+      <!--- <script async type="text/json">{ -->
+      <script type="text/json">{
+        "title": "{{ page.title }}",
+        "description": "{{ page.description }}",
+        "published": "{{ page.date | date: '%B %-d, %Y' }}",
+        "authors": [
+          {% for author in page.authors -%}
+          {
+            "author": "{{ author.name }}"
+            {%- if author.url and author.url != "" -%}
+            ,"authorURL": "{{ author.url }}"
+            {%- endif -%}
+            {%- if author.affiliations and author.affiliations.name and author.affiliations.name != "" -%}
+            ,"affiliations": [
+              {
+                "name": "{{ author.affiliations.name }}"
+                {%- if author.affiliations.url and author.affiliations.url != "" -%}
+                ,"url": "{{ author.affiliations.url }}"
+                {%- endif -%}
+              }
+            ]
+            {%- endif -%}
+          }{% if forloop.last == false %},{% endif %}
+          {% endfor %}
+        ],
+        "katex": {
+          "delimiters": [
             {
-              "name": "{{ author.affiliations.name }}"
-              {%- if author.affiliations.url and author.affiliations.url != "" -%}
-              ,"url": "{{ author.affiliations.url }}"
-              {%- endif -%}
+              "left": "$",
+              "right": "$",
+              "display": false
+            },
+            {
+              "left": "$$",
+              "right": "$$",
+              "display": true
             }
           ]
-          {%- endif -%}
-        }{% if forloop.last == false %},{% endif %}
-        {% endfor %}
-      ],
-      "katex": {
-        "delimiters": [
-          {
-            "left": "$",
-            "right": "$",
-            "display": false
-          },
-          {
-            "left": "$$",
-            "right": "$$",
-            "display": true
-          }
-        ]
-      }
-    }</script>
-  </d-front-matter>
-
-  <body class="{%- if site.navbar_fixed -%}fixed-top-nav{%- endif -%} {%- unless site.footer_fixed -%}sticky-bottom-footer{%- endunless -%}">
+        }
+      }</script>
+    </d-front-matter>
 
     <!-- Header -->
     {%- include header.html %}
