@@ -25,7 +25,7 @@
       <!--- <script async type="text/json">{ -->
       <script type="text/json">{
         "title": {{ page.title | jsonify }},
-        "description": {{ page.description | jsonify }},
+        "description": {{ page.description | default: "" | jsonify }},
         "published": "{{ page.date | date: '%B %-d, %Y' }}",
         "authors": [
           {% for author in page.authors -%}

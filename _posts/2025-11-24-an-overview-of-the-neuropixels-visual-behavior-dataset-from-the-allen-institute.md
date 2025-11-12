@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: An Overview of the Neuropixels Visual Behavior Dataset From the Allen Institute
-description: 
+description: Tutorial on analyzing the Visual Behavior Neuropixels dataset from the Allen Institute
 date: 2025-11-24
 future: true
 htmlwidgets: true
@@ -25,12 +25,12 @@ authors:
       name: Allen Institute
   - name: Marina Garrett
     # url: ""
-    # affiliations:
-    #   name:
+    affiliations:
+      name: Allen Institute
   - name: Saskia EJ de Vries
     # url: ""
-    # affiliations:
-    #   name:
+    affiliations:
+      name: Allen Institute
   - name: Shawn R Olsen
     url: "https://scholar.google.com/citations?user=huDkgmYAAAAJ&hl=en"
     affiliations:
