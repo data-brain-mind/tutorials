@@ -101,7 +101,9 @@ The numbers in the *Training and Recording Workflow* bubble below give the total
 
 {% include figure.html path="assets/img/2025-11-24-an-overview-of-the-neuropixels-visual-behavior-dataset-from-the-allen-institute/recording_strategy.png" class="img-fluid" style="width:600px;" %}
 
-<br>
+
+#### [Tutorial link](https://github.com/AllenNeuralDynamics/neurips-vbn-tutorial/blob/main/code/vbn_neurips_tutorial.ipynb)
+
 
 ### Data Resources associated with this dataset 
 
@@ -130,5 +132,3 @@ The numbers in the *Training and Recording Workflow* bubble below give the total
 
 *Visual Behavior Neuropixels Technical Whitepaper:* Document providing detailed information about the Allen Brain Observatory data collection pipeline and rig hardware. 
 
-<br> 
-#### [Tutorial link](https://github.com/AllenNeuralDynamics/neurips-vbn-tutorial/blob/main/code/vbn_neurips_tutorial.ipynb)
