@@ -104,8 +104,9 @@ The numbers in the *Training and Recording Workflow* bubble below give the total
 
 #### [Tutorial link](https://github.com/AllenNeuralDynamics/neurips-vbn-tutorial/blob/main/code/vbn_neurips_tutorial.ipynb)
 
+### Resources 
 
-### Data Resources associated with this dataset 
+#### Data Resources associated with this dataset 
 
 | Data Resource    | Format | Uniform Resource ID (URI) |
 | -------- | ------- | ------- |
@@ -118,17 +119,19 @@ The numbers in the *Training and Recording Workflow* bubble below give the total
 
 <br>
 
-### Technical Resources associated with this dataset 
+#### Technical Resources associated with this dataset 
 
 | Technical Resource    | Format | Uniform Resource ID (URI) |
 | -------- | ------- | ------- |
 | AllenSDK tutorials| Jupyter Notebooks | https://allensdk.readthedocs.io/en/latest/visual_behavior_neuropixels.html|
 | Visual Behavior Neuropixels Databook | Jupyter Book | https://allenswdb.github.io/physiology/ephys/visual-behavior/VB-Neuropixels.html |
-| Visual Behavior Neuropixels Technical Whitepaper | PDF| https://brain-map.org/our-research/circuits-behavior/visual-behavior|
+| Visual Behavior Neuropixels Technical Whitepaper | PDF| https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/f7/06/f706855a-a3a1-4a3a-a6b0-3502ad64680f/visualbehaviorneuropixels_technicalwhitepaper.pdf|
 
 *AllenSDK tutorials:* Jupyter notebooks demonstrating how to access data with the AllenSDK and perform basic analysis on behavior, spike and LFP data. 
 
 *Visual Behavior Neuropixels Databook:* Jupyter Book providing background information about the experimental design and change detection task, as well as in-depth descriptions of all metadata tables in the dataset. 
 
 *Visual Behavior Neuropixels Technical Whitepaper:* Document providing detailed information about the Allen Brain Observatory data collection pipeline and rig hardware. 
+
+In addition to these materials, please refer to the following manuscript, which provides a basic characterization of the dataset and which we intend as the primary citation for those using this resource: https://www.biorxiv.org/content/10.1101/2025.10.17.683190v1. 
 
