@@ -30,7 +30,7 @@ authors:
     affiliations:
       - name: "University of Vermont"
 
-bibliography: "2025-09-05-roamm-dataset.bib"
+bibliography: "2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations.bib"
 
 toc:
   - name: "Introduction and motivation"
