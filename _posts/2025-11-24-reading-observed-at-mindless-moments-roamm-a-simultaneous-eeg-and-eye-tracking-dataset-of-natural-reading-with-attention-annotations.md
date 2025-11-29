@@ -106,7 +106,10 @@ In the remainder of the post, we present the ROAMM Dataset including the partici
 ### 2.1 Participants
 We recruited 58 participants from the University of Vermont who were fluent in English and reported no family history of neurological disorders or epilepsy. All participants underwent screening and provided informed consent before participation. The study protocol was approved by the university Institutional Review Board. 14 participants were excluded due to issues such as equipment difficulties, incomplete experimental runs, monocular-only eye-tracking data, or missing demographic information. The final dataset includes **44 participants**. The participants' age ranged from 18 to 64 years (Mean = 22.6, SD = 7.8, Median = 20, Mode = 19). This indicates a relatively young but moderately varied sample. Our sample also includes labels for gender, handedness, and self-identified ADHD.  
 
-<img src="{{ 'assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/demographics.png' | relative_url }}" alt="demographics" style="zoom:45%;" />
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/demographics.png" class="img-fluid" %}
+</div>
 
 ### 2.2 The ReMind paradigm
 Participants read five articles selected from Wikipedia (2015): **Pluto** (the dwarf planet), **the Prisoner’s Dilemma**, **Serena Williams**, **the History of Film**, and **the Voynich Manuscript**. These topics were chosen to be unfamiliar yet comprehensible without prior background knowledge. Each article was standardized by removing images and jargon, then divided into 10 pages (≈220 words per page). Pages were rendered using a custom Python script into 16 lines of black Courier-font text on a gray background. To encourage engagement and assess comprehension, we created one multiple-choice question per page. Each question was designed to require attention to that page alone.  
