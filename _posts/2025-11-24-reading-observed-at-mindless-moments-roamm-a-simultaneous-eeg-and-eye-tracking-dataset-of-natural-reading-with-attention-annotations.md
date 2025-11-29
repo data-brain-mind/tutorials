@@ -5,7 +5,7 @@ description: "ROAMM (Reading Observed At Mindless Moments) is a large-scale mult
 date: 2025-09-05
 future: true
 htmlwidgets: true
-hidden: true
+hidden: false
 
 authors:
   - name: Haorui Sun
