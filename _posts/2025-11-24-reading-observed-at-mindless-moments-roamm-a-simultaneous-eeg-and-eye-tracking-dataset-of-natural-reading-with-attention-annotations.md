@@ -157,9 +157,11 @@ The ROAMM dataset is large and rich. It contains over 46 million recorded sample
 
 The histograms below illustrate the distribution of data across participants for each attribute in the ROAMM dataset. While all participants contributed, individual differences are evident in the distributions. This highlights the real-world variability in human data and underscores the importance of carefully considering modeling approaches, whether developing a general model across participants or an individualized classifier tailored to each person. 
 
-<img src="{{ 'assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/data_scale.png' | relative_url }}"
-     alt="data_scale"
-     style="zoom: 20%;" />
+
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/data_scale.png" class="img-fluid" %}
+</div>
 
 
 ### 2.6 Data validation
@@ -182,8 +184,10 @@ We also validated fixation-to-word mappings by plotting gaze traces directly on 
 #### 2.6.4 Reliable MW onset
 Finally, we validated MW onset labeling. In a paper currently under review, we demonstrated that incorporating MW onset information significantly improves the performance of linear regression classifiers trained to detect MW from eye-tracking features. A sliding-window analysis not only replicated prior findings of reduced fixation rates during MW episodes <d-cite key="Reichle2010"></d-cite>, but also revealed that these changes begin precisely at the reported MW onset. These findings demonstrate that the **ReMind paradigm provides a powerful framework for capturing MW onset and its progression over time**, ensuring that our attention state annotations are precise and grounded in reliable MW onset information. 
 
-<img src="{{ 'assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eye_mwonset.png' | relative_url }}" alt="eye_mwonset" style="zoom:40%;" />
 
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eye_mwonset.png" class="img-fluid" %}
+</div>
 ### 2.7 Data accessibility and availability
 The processed datasets are publicly available on the [OSF](https://osf.io/kmvgb/overview). Due to their large size, raw datasets are not hosted online but are available upon request. All preprocessing scripts used to generate the processed datasets are available in the [GitHub repository](https://github.com/GlassBrainLab/ROAMM.git). 
 
@@ -255,7 +259,10 @@ for subject_id in all_subjects:
 
 The ROAMM dataset is rich in scope, combining multiple valuable modalities: **eye-tracking** (gaze position and pupil size), **brain signals** (i.e., EEG), **human attention states**, and **linguistic content** (the reading text itself). This multimodal design provides countless opportunities for machine learning practitioners to explore how these signals interact. Below, we highlight 4 open questions that showcase the potential of ROAMM for advancing both cognitive science and computational modeling.
 
-<img src="{{ 'assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/roamm_modalities.png' | relative_url }}" alt="roamm_modalities" style="zoom:40%;" />
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/roamm_modalities.png" class="img-fluid" %}
+</div>
 
 ### 3.1 Learn shared representation from EEG and eye-tracking
 Eyes, particularly pupil size, reveal much about internal cognitive states and arousal <d-cite key="Castellotti2025"></d-cite>. With a dataset at the scale of ROAMM, we can now ask whether eye-tracking and EEG share common patterns of variance that allow them to be tightly linked.
