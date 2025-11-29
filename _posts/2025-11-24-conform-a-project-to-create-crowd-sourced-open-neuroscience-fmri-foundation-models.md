@@ -83,7 +83,7 @@ Despite their increased scale relative to standard fMRI studies, these datasets 
 
 <img src="{{ '/assets/img/2025-11-24-conform-a-project-to-create-crowd-sourced-open-neuroscience-fmri-foundation-models/Workshop-NeurIPS25.png' | relative_url }}"
      alt="CONFORM workflow"
-     style="width: 70%; margin: auto;" />
+     style="width: 80%; margin: auto;" />
 
 
 
