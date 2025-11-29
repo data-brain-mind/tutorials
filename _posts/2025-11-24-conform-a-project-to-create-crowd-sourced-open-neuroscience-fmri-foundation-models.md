@@ -2,12 +2,10 @@
 layout: distill
 title: "CONFORM: A Project to Create Crowd-Sourced Open Neuroscience fMRI Foundation Models"
 description: CONFORM is a crowd-sourced framework to build a human fMRI foundation model through improved preprocessing, dataset aggregation, and in-context representation learning.
-date: 2025-11-24
+description: We propose CONFORM (Crowd-Sourced Open Neuroscience fMRI Foundation Model), a project that will bring together recent advances in neural data processing and analysis with a novel, crowd-sourced infrastructure. This transformative approach will overcome several current challenges in creating a foundational human fMRI model for vision: collecting massive amounts of data from a handful of participants is neither scalable nor sustainable; the number of participants is small for such datasets; stimulus diversity is limited; and generalizability to different populations is poor. CONFORM will overcome these limitations by combining a powerful denoising method (PSN), a scalable framework for aggregating existing fMRI datasets (MOSAIC), and a meta-learning model that enables generalization with much smaller data from new participants (BraInCoRL). Our collaborative effort will produce models built on unprecedented scale and diversity—ultimately with hundreds of participants and hundreds of thousands of naturalistic image and movie stimuli—and provide the tools for continuous expansion of the underlying dataset. This ``crowd-sourced'' approach will allow many more researchers to leverage state-of-the-art NeuroAI methods using the scale of data they typically collect, democratizing access to powerful models and accelerating scientific discovery for a wide range of neuroscientific domains and populations.
+date: 2025-10-09
 future: true
 htmlwidgets: true
-
-# Camera-ready version deployed from OpenReview
-# Set to true to hide until authors complete their updates via PR
 hidden: false
 
 authors:
@@ -52,10 +50,8 @@ authors:
     affiliations:
       name: University of Hong Kong
 
-# must be the exact same name as your blogpost
-bibliography: 2025-11-24-conform-a-project-to-create-crowd-sourced-open-neuroscience-fmri-foundation-models.bib
+bibliography: workshop.bib
 
-# Add a table of contents to your post.
 toc:
   - name: Background and Introduction
   - name: Towards a Dynamic Foundation Model for Visual fMRI
@@ -64,13 +60,6 @@ toc:
     - name: Integration of fMRI Data Across Studies—MOSAIC
     - name: Generalizing Across Participants and Studies in a Low Data Regime—BraInCoRL
   - name: Impact and Conclusions
-
-# Below is an example of injecting additional post-specific styles.
-# Delete this section if not needed.
-# _styles: >
-#   .your-custom-class {
-#     /* your styles here */
-#   }
 ---
 
 ## Background and Introduction
@@ -93,7 +82,7 @@ In visual neuroscience, a first step in meeting this challenge has already been 
 
 Despite their increased scale relative to standard fMRI studies, these datasets still present significant challenges in the construction of NeuroAI models. The number of observations and participants is still small for purposes of model training, and data quality is dependent on preprocessing methods. More importantly, prediction accuracy and decoding performance are typically high only when trained and tested within the same participant—due to inherent structural and functional differences between individual brains and, at present, weak methods for generalizing across them. Consequently, when models are applied across participants, even within the same study, their performance and decoding capabilities decrease dramatically.
 
-![CONFORM workflow]({{ '/assets/img/2025-11-24-conform-a-project-to-create-crowd-sourced-open-neuroscience-fmri-foundation-models/Workshop-NeurIPS25.png' | relative_url }})
+![CONFORM workflow](Workshop-NeurIPS25.png)
 
 **Figure 1: CONFORM workflow.** A single, optimized experimental design is distributed to multiple sites for data collection. The collected data is then centralized for preprocessing, alignment, and integration into a foundational dataset. This process creates a continuous feedback loop, allowing the dataset to grow in size and diversity, which informs future experimental design and provides the basis for a strong foundation model.
 
