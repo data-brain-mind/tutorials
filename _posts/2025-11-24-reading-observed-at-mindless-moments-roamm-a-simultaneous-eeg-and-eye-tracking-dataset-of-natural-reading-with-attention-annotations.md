@@ -32,45 +32,49 @@ authors:
 
 bibliography: 2025-09-05-roamm-dataset.bib  
 
-toc: 
+toc:
   - name: Introduction and motivation 
     subsections:
-    - name: Neural decoding models: from science fiction to reality
-    - name: Simulatenous EEG and eye-tracking for cognitive dataset
-    - name: What are some challenges?
-      subsections:
-      - name: The rarity of datasets on natural reading
-      - name: Frequent mind-wandering (off-task thoughts) during reading
-    - name: Mind-wandering is sneaky, so how do we study it?
-      subsections:
-      - name: Previous approaches and their drawbacks
-      - name: Our novel ReMind paradigm
-    - name: Introducing the ROAMM dataset
+      - name: "Neural decoding models: from science fiction to reality"
+      - name: Simultaneous EEG and eye-tracking for cognitive dataset
+      - name: What are some challenges?
+        subsections:
+          - name: The rarity of datasets on natural reading
+          - name: Frequent mind-wandering (off-task thoughts) during reading
+      - name: Mind-wandering is sneaky, so how do we study it?
+        subsections:
+          - name: Previous approaches and their drawbacks
+          - name: Our novel ReMind paradigm
+      - name: Introducing the ROAMM dataset
+
   - name: ROAMM dataset
     subsections:
-    - name: Participants
-    - name: The ReMind paradigm
-    - name: Data acquisition and preprocessing
-      subsections:
-      - name: Eye-tracking
-      - name: EEG
-    - name: Dataset format
-    - name: Dataset scale
-    - name: Data validation 
-      subsections:
-      - name: EEG and eye-tracking recoding quality
-      - name: EEG and eye-tracking alignment
-      - name: Fixation-to-word mapping
-      - name: Reliable MW onset
-    - name: Data accessibility and availability
-    - name: How to use ROAMM
+      - name: Participants
+      - name: The ReMind paradigm
+      - name: Data acquisition and preprocessing
+        subsections:
+          - name: Eye-tracking
+          - name: EEG
+      - name: Dataset format
+      - name: Dataset scale
+      - name: Data validation 
+        subsections:
+          - name: EEG and eye-tracking recording quality
+          - name: EEG and eye-tracking alignment
+          - name: Fixation-to-word mapping
+          - name: Reliable MW onset
+      - name: Data accessibility and availability
+      - name: How to use ROAMM
+
   - name: Open questions for ML practitioners using ROAMM
     subsections:
-    - name: Learn shared representation from EEG and eye-tracking
-    - name: Build a momentary human attention decoder
-    - name: Is human attention what we need for neural decoding?
-    - name: Use EEG, eye-tracking, human attention, and reading text to predict comprehension
+      - name: Learn shared representation from EEG and eye-tracking
+      - name: Build a momentary human attention decoder
+      - name: Is human attention what we need for neural decoding?
+      - name: Use EEG, eye-tracking, human attention, and reading text to predict comprehension
+
   - name: Conclusions
+
 ---
 
 ## TL;DR
