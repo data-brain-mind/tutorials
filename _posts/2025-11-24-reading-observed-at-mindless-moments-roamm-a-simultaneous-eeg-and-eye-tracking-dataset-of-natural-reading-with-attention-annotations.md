@@ -114,7 +114,10 @@ We recruited 58 participants from the University of Vermont who were fluent in E
 ### 2.2 The ReMind paradigm
 Participants read five articles selected from Wikipedia (2015): **Pluto** (the dwarf planet), **the Prisoner’s Dilemma**, **Serena Williams**, **the History of Film**, and **the Voynich Manuscript**. These topics were chosen to be unfamiliar yet comprehensible without prior background knowledge. Each article was standardized by removing images and jargon, then divided into 10 pages (≈220 words per page). Pages were rendered using a custom Python script into 16 lines of black Courier-font text on a gray background. To encourage engagement and assess comprehension, we created one multiple-choice question per page. Each question was designed to require attention to that page alone.  
 
-![remind_task](remind_task.png)
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/remind_task.png" class="img-fluid" %}
+</div>
 
 The reading task was programmed using PsychoPy <d-cite key="Peirce2019"></d-cite>, a platform for developing psychological experiments. Each experimental session consisted of five runs, one for each article. Articles were presented in a randomized order. Before the first run, participants received task instructions and an explicit definition of mind-wandering (*see above figure*). Participants read at their own pace with no time limit per page but could not re-read previous pages. If they noticed themselves mind-wandering, they pressed the “F” key to access a dedicated reporting screen. There, they clicked on the words marking where they believed the MW episode began and ended (highlighted onscreen for clarity). If the episode began on the prior page, they marked the first word of the current page. After submitting the report, they returned to the same page to resume reading. For consistency, only one MW report was permitted per page. 
 
