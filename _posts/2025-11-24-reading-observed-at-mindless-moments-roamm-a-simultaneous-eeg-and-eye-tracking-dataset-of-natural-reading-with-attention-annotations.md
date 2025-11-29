@@ -30,7 +30,7 @@ authors:
     affiliations:
       - name: "University of Vermont"
 
-bibliography: "2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations.bib"
+bibliography: 2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations.bib
 
 toc:
   - name: "Introduction and motivation"
@@ -169,17 +169,25 @@ We validated the ROAMM dataset to ensure high recording quality, precise alignme
 #### 2.6.1 EEG and eye-tracking recoding quality
 To assess recording quality, we inspected EEG and eye-tracking signals in parallel. As demonstrated below using a randomly selected 10-second window, preprocessed EEG from selected channels show **clean activity with minimal muscle and eye artifacts**. Eye-tracking features behave as expected: **fixations are followed by saccades, blinks appeared distinctly**, and **gaze position traces reveal typical reading patterns**. Specifically, x-coordinates increase left to right across each line, while y-coordinates step down across successive lines, confirming naturalistic line-by-line reading. For context, the top left of the displayed reading page is (x,y) = (258, 5.4) and the bottom right is (x,y) = (1662, 1074.6). 
 
-![eeg_eye_valid](eeg_eye_valid.png)
 
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/eeg_eye_valid.png" class="img-fluid" %}
+</div>
 #### 2.6.2 EEG and eye-tracking alignment
 Next, we validated alignment between EEG and eye-tracking streams. Using the unfold toolbox, we deconvolved fixation-related potentials (FRPs) during periods of reading without MW. **The resulting FRPs and P1 topography replicated patterns reported using the ZuCo 2.0 dataset** <d-cite key="Hollenstein2019"></d-cite>, providing strong evidence for the temporal precision of our co-registered recordings. 
 
-![frp](frp.png)
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/frp.png" class="img-fluid" %}
+</div>
 
 #### 2.6.3 Fixation-to-word mapping
 We also validated fixation-to-word mappings by plotting gaze traces directly on reading pages. In one example, a participant read mindfully without reporting MW; in another, the same participant reported an MW episode. Onset and offset words of the MW episode were highlighted in red, while fixations appeared as colored dots. Larger dots indicated longer durations, and a purple-to-yellow gradient reflected temporal order. Fixations within MW episodes were additionally center-colored in red, and consecutive fixations were linked by red lines to mark saccades. **Most fixations aligned neatly with words, and the gaze traces showed clear left-to-right reading flows, confirming the accuracy of fixation-to-word mapping.** 
 
-![reading_page_full](reading_page_full.png)
+
+<div class="l-page">
+  {% include figure.html path="assets/img/2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations/reading_page_full.png" class="img-fluid" %}
+</div>
 
 #### 2.6.4 Reliable MW onset
 Finally, we validated MW onset labeling. In a paper currently under review, we demonstrated that incorporating MW onset information significantly improves the performance of linear regression classifiers trained to detect MW from eye-tracking features. A sliding-window analysis not only replicated prior findings of reduced fixation rates during MW episodes <d-cite key="Reichle2010"></d-cite>, but also revealed that these changes begin precisely at the reported MW onset. These findings demonstrate that the **ReMind paradigm provides a powerful framework for capturing MW onset and its progression over time**, ensuring that our attention state annotations are precise and grounded in reliable MW onset information. 
