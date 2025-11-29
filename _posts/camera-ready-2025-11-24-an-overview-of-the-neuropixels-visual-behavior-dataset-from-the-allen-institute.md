@@ -66,7 +66,7 @@ The following tutorial will provide a brief introduction to this dataset then de
 
 ## Introduction to the experiment
 
-Our ability to perceive the sensory environment and flexibly interact with the world requires the coordinated action of neuronal populations distributed throughout the brain. To further our understanding of the neural basis of behavior, the Visual Behavior project leveraged the Allen Brain Observatory pipeline (diagrammed below; gray panels refer to the companion [Visual Behavior Optical Physiology dataset](https://portal.brain-map.org/circuits-behavior/visual-behavior-2p)) to collect a large-scale, highly standardized dataset consisting of recordings of neural activity in mice that have learned to perform a visual chang detection task. This dataset can be used to investigate how patterns of spiking activity across the visual cortex and thalamus are related to behavior and also how these activity dynamics are influenced by task-engagement and prior visual experience.  
+Our ability to perceive the sensory environment and flexibly interact with the world requires the coordinated action of neuronal populations distributed throughout the brain. To further our understanding of the neural basis of behavior, the Visual Behavior project leveraged the Allen Brain Observatory pipeline (diagrammed below; gray panels refer to the companion [Visual Behavior Optical Physiology dataset](https://portal.brain-map.org/circuits-behavior/visual-behavior-2p)) to collect a large-scale, highly standardized dataset consisting of recordings of neural activity in mice that have learned to perform a visual change detection task. This dataset can be used to investigate how patterns of spiking activity across the visual cortex and thalamus are related to behavior and also how these activity dynamics are influenced by task-engagement and prior visual experience.  
 
 The Visual Behavior Neuropixels dataset includes 153 sessions from 81 mice. These data are made openly accessible, with all recorded timeseries, behavioral events, and experimental metadata conveniently packaged in Neurodata Without Borders (NWB) files that can be accessed and analyzed using our open Python software package, the  [AllenSDK](https://github.com/AllenInstitute/AllenSDK).
 
@@ -80,11 +80,11 @@ The Visual Behavior Optical Physiology and Visual Behavior Neuropixels projects 
 
 ### Neuropixels recordings throughout visual cortex and thalamus
 
-This dataset includes multi-regional Neuropixels recordings from up to 6 probes at once. The probes target six visual cortical areas including VISp, VISl, VISal, VISrl, VISam, and VISpm. In addition, multiple subcortical areas are also typically measured, including visual thalamic areas LGd and LP as well as units in the hippocampus and midbrain. Note that for the first release, NWB files will include spike times for units recorded in these structures, but LFP data will not be available.
+This dataset includes multi-regional Neuropixels recordings from up to 6 probes at once. The probes target six visual cortical areas including VISp, VISl, VISal, VISrl, VISam, and VISpm. In addition, multiple subcortical areas are also typically measured, including visual thalamic areas LGd and LP as well as units in the hippocampus and midbrain. In addition to spiking activity, NWB files contain local field potential (LFP) data from each probe insertion.
 
 Recordings were made in three genotypes: C57BL6J, Sst-IRES-Cre; Ai32, and Vip-IRES-Cre; Ai32. By crossing Sst and Vip lines to the Ai32 ChR2 reporter mouse, we were able to activate putative Sst+ and Vip+ cortical interneurons by stimulating the cortical surface with blue light during an optotagging protocol at the end of each session.
 
-{% include figure.html path="assets/img/2025-11-24-an-overview-of-the-neuropixels-visual-behavior-dataset-from-the-allen-institute/recording_strategy.png" class="img-fluid" style="width:600px;" %}
+{% include figure.html path="assets/img/2025-11-24-an-overview-of-the-neuropixels-visual-behavior-dataset-from-the-allen-institute/probe_diagram.png" class="img-fluid" style="width:600px;" %}
 
 ### Investigating the impact of stimulus novelty on neural responses and behavior
 
@@ -102,5 +102,36 @@ The numbers in the *Training and Recording Workflow* bubble below give the total
 {% include figure.html path="assets/img/2025-11-24-an-overview-of-the-neuropixels-visual-behavior-dataset-from-the-allen-institute/recording_strategy.png" class="img-fluid" style="width:600px;" %}
 
 
+#### [Tutorial link](https://github.com/AllenNeuralDynamics/neurips-vbn-tutorial/blob/main/code/vbn_neurips_tutorial.ipynb)
 
-[Tutorial link](https://anonymous.4open.science/r/neurips-vbn-tutorial-7B18/vbn_neurips_tutorial.ipynb)
+### Resources 
+
+#### Data Resources associated with this dataset 
+
+| Data Resource    | Format | Uniform Resource ID (URI) |
+| -------- | ------- | ------- |
+| Behavior + spike data | NWB | s3://visual-behavior-neuropixels-data/visual-behavior-neuropixels/, https://doi.org/10.48324/dandi.000713/0.240702.1725 |
+| Behavior training data | NWB | s3://visual-behavior-neuropixels-data/visual-behavior-neuropixels/, https://doi.org/10.48324/dandi.000713/0.240702.1725 |
+| Local Field Potential (LFP) data | NWB| s3://visual-behavior-neuropixels-data/visual-behavior-neuropixels/, https://doi.org/10.48324/dandi.000713/0.240702.1725 |
+| Raw AP band data | Binary | s3://allen-brain-observatory/visual-behavior-neuropixels/raw-data/ |
+| Raw LFP band data | Binary | s3://allen-brain-observatory/visual-behavior-neuropixels/raw-data/ |
+| Eye, face, body videos  | MP4  | s3://allen-brain-observatory/visual-behavior-neuropixels/raw-data/ |
+
+<br>
+
+#### Technical Resources associated with this dataset 
+
+| Technical Resource    | Format | Uniform Resource ID (URI) |
+| -------- | ------- | ------- |
+| AllenSDK tutorials| Jupyter Notebooks | https://allensdk.readthedocs.io/en/latest/visual_behavior_neuropixels.html|
+| Visual Behavior Neuropixels Databook | Jupyter Book | https://allenswdb.github.io/physiology/ephys/visual-behavior/VB-Neuropixels.html |
+| Visual Behavior Neuropixels Technical Whitepaper | PDF| https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/f7/06/f706855a-a3a1-4a3a-a6b0-3502ad64680f/visualbehaviorneuropixels_technicalwhitepaper.pdf|
+
+*AllenSDK tutorials:* Jupyter notebooks demonstrating how to access data with the AllenSDK and perform basic analysis on behavior, spike and LFP data. 
+
+*Visual Behavior Neuropixels Databook:* Jupyter Book providing background information about the experimental design and change detection task, as well as in-depth descriptions of all metadata tables in the dataset. 
+
+*Visual Behavior Neuropixels Technical Whitepaper:* Document providing detailed information about the Allen Brain Observatory data collection pipeline and rig hardware. 
+
+In addition to these materials, please refer to the following manuscript, which provides a basic characterization of the dataset and which we intend as the primary citation for those using this resource: https://www.biorxiv.org/content/10.1101/2025.10.17.683190v1. 
+
