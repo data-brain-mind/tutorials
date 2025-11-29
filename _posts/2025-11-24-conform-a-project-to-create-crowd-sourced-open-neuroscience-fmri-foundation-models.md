@@ -49,7 +49,7 @@ authors:
     affiliations:
       name: University of Hong Kong
 
-bibliography: workshop.bib
+bibliography: 2025-11-24-conform-a-project-to-create-crowd-sourced-open-neuroscience-fmri-foundation-models.bib
 
 toc:
   - name: Background and Introduction
@@ -81,7 +81,10 @@ In visual neuroscience, a first step in meeting this challenge has already been 
 
 Despite their increased scale relative to standard fMRI studies, these datasets still present significant challenges in the construction of NeuroAI models. The number of observations and participants is still small for purposes of model training, and data quality is dependent on preprocessing methods. More importantly, prediction accuracy and decoding performance are typically high only when trained and tested within the same participant—due to inherent structural and functional differences between individual brains and, at present, weak methods for generalizing across them. Consequently, when models are applied across participants, even within the same study, their performance and decoding capabilities decrease dramatically.
 
-![CONFORM workflow](Workshop-NeurIPS25.png)
+<img src="assets/img/2025-11-24-conform-a-project-to-create-crowd-sourced-open-neuroscience-fmri-foundation-models/Workshop-NeurIPS25.png"
+     alt="CONFORM workflow"
+     style="width: 70%; display: block; margin: 0 auto;" />
+
 
 **Figure 1: CONFORM workflow.** A single, optimized experimental design is distributed to multiple sites for data collection. The collected data is then centralized for preprocessing, alignment, and integration into a foundational dataset. This process creates a continuous feedback loop, allowing the dataset to grow in size and diversity, which informs future experimental design and provides the basis for a strong foundation model.
 
