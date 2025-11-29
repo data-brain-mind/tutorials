@@ -1,79 +1,79 @@
 ---
 layout: distill
-title: "Reading Observed At Mindless Moments (ROAMM): A Simultaneous EEG and Eye-Tracking Dataset of Natural Reading with Attention Annotations"
-description: "ROAMM (Reading Observed At Mindless Moments) is a large-scale multimodal dataset of EEG and eye-tracking during naturalistic reading, with precise annotations of mind-wandering episodes to advance research in attention, language, and machine learning."
+title: Reading Observed At Mindless Moments (ROAMM): A Simultaneous EEG and Eye-Tracking Dataset of Natural Reading with Attention Annotations
+description: ROAMM (Reading Observed At Mindless Moments) is a large-scale multimodal dataset of EEG and eye-tracking during naturalistic reading, with precise annotations of mind-wandering episodes to advance research in attention, language, and machine learning.
 date: 2025-09-05
 future: true
 htmlwidgets: true
 hidden: false
 
 authors:
-  - name: "Haorui Sun"
+  - name: Haorui Sun
     affiliations:
-      - name: "University of Vermont"
-  - name: "Ardyn Vivienne Olszko"
+      - name: University of Vermont
+  - name: Ardyn Vivienne Olszko
     affiliations:
-      - name: "University of Vermont"
-  - name: "Yida Chen"
+      - name: University of Vermont
+  - name: Yida Chen
     affiliations:
-      - name: "Harvard University"
-  - name: "Hazen Kellner"
+      - name: Harvard University
+  - name: Hazen Kellner
     affiliations:
-      - name: "University of Vermont"
-  - name: "Niharika Singh"
+      - name: University of Vermont
+  - name: Niharika Singh
     affiliations:
-      - name: "University of Vermont"
-  - name: "Lincoln Lewisequerre"
+      - name: University of Vermont
+  - name: Lincoln Lewisequerre
     affiliations:
-      - name: "University of Vermont"
-  - name: "David C. Jangraw"
+      - name: University of Vermont
+  - name: David C. Jangraw
     affiliations:
-      - name: "University of Vermont"
+      - name: University of Vermont
 
 bibliography: 2025-11-24-reading-observed-at-mindless-moments-roamm-a-simultaneous-eeg-and-eye-tracking-dataset-of-natural-reading-with-attention-annotations.bib
 
 toc:
-  - name: "Introduction and motivation"
+  - name: Introduction and motivation
     subsections:
-      - name: "Neural decoding models: from science fiction to reality"
-      - name: "Simultaneous EEG and eye-tracking for cognitive dataset"
-      - name: "What are some challenges?"
+      - name: Neural decoding models: from science fiction to reality
+      - name: Simultaneous EEG and eye-tracking for cognitive dataset
+      - name: What are some challenges?
         subsections:
-          - name: "The rarity of datasets on natural reading"
-          - name: "Frequent mind-wandering (off-task thoughts) during reading"
-      - name: "Mind-wandering is sneaky, so how do we study it?"
+          - name: The rarity of datasets on natural reading
+          - name: Frequent mind-wandering (off-task thoughts) during reading
+      - name: Mind-wandering is sneaky, so how do we study it?
         subsections:
-          - name: "Previous approaches and their drawbacks"
-          - name: "Our novel ReMind paradigm"
-      - name: "Introducing the ROAMM dataset"
+          - name: Previous approaches and their drawbacks
+          - name: Our novel ReMind paradigm
+      - name: Introducing the ROAMM dataset
 
-  - name: "ROAMM dataset"
+  - name: ROAMM dataset
     subsections:
-      - name: "Participants"
-      - name: "The ReMind paradigm"
-      - name: "Data acquisition and preprocessing"
+      - name: Participants
+      - name: The ReMind paradigm
+      - name: Data acquisition and preprocessing
         subsections:
-          - name: "Eye-tracking"
-          - name: "EEG"
-      - name: "Dataset format"
-      - name: "Dataset scale"
-      - name: "Data validation"
+          - name: Eye-tracking
+          - name: EEG
+      - name: Dataset format
+      - name: Dataset scale
+      - name: Data validation
         subsections:
-          - name: "EEG and eye-tracking recording quality"
-          - name: "EEG and eye-tracking alignment"
-          - name: "Fixation-to-word mapping"
-          - name: "Reliable MW onset"
-      - name: "Data accessibility and availability"
-      - name: "How to use ROAMM"
+          - name: EEG and eye-tracking recording quality
+          - name: EEG and eye-tracking alignment
+          - name: Fixation-to-word mapping
+          - name: Reliable MW onset
+      - name: Data accessibility and availability
+      - name: How to use ROAMM
 
-  - name: "Open questions for ML practitioners using ROAMM"
+  - name: Open questions for ML practitioners using ROAMM
     subsections:
-      - name: "Learn shared representation from EEG and eye-tracking"
-      - name: "Build a momentary human attention decoder"
-      - name: "Is human attention what we need for neural decoding?"
-      - name: "Use EEG, eye-tracking, human attention, and reading text to predict comprehension"
+      - name: Learn shared representation from EEG and eye-tracking
+      - name: Build a momentary human attention decoder
+      - name: Is human attention what we need for neural decoding?
+      - name: Use EEG, eye-tracking, human attention, and reading text to predict comprehension
 
-  - name: "Conclusions"
+  - name: Conclusions
 ---
 
 
