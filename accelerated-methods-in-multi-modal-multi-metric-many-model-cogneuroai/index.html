@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<!-- _layouts/distill.html --><html>
+
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI | Data on the Brain &amp; Mind Tutorial Track (NeurIPS 2025)</title>
+    <meta name="author" content="  ">
+    <meta name="description" content="A tutorial showcasing a number of (GPU-accelerated) methods for probing the representational alignment of brains, minds, and machines. An exploration of computational modeling methods at the intersection of cognitive neuroscience and artificial intelligence.">
+    <meta name="keywords" content="machine-learning, ml, deep-learning, reinforcement-learning">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/tutorials/assets/img/brain-icon.svg">
+    
+    <link rel="stylesheet" href="/tutorials/assets/css/main.css">
+    <link rel="canonical" href="https://data-brain-mind.github.io/tutorials/accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/tutorials/assets/js/theme.js"></script>
+    <script src="/tutorials/assets/js/dark_mode.js"></script>
+    
+
+
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <!-- Distill js -->
+    <script src="/tutorials/assets/js/distillpub/template.v2.js"></script>
+    <script src="/tutorials/assets/js/distillpub/transforms.v2.js"></script>
+    <script src="/tutorials/assets/js/distillpub/overrides.js"></script>
+    
+    <!-- Page/Post style -->
+    <style type="text/css">
+      .code-fold summary {
+  cursor: pointer;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.5em;
+} .code-fold summary:hover {
+  color: #333;
+} details.code-fold {
+  margin-bottom: 1em;
+  border-left: 3px solid #ddd;
+  padding-left: 1em;
+}
+
+    </style>
+  </head>
+
+  <body class="fixed-top-nav">
+
+    <d-front-matter>
+      <!--- <script async type="text/json">{ -->
+      <script type="text/json">{
+        "title": "Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI",
+        "description": "A tutorial showcasing a number of (GPU-accelerated) methods for probing the representational alignment of brains, minds, and machines. An exploration of computational modeling methods at the intersection of cognitive neuroscience and artificial intelligence.",
+        "published": "November 24, 2025",
+        "authors": [
+          {
+            "author": "Colin Conwell","affiliations": [
+              {
+                "name": "Massachusetts Institute of Technology"}
+            ]}
+          
+        ],
+        "katex": {
+          "delimiters": [
+            {
+              "left": "$",
+              "right": "$",
+              "display": false
+            },
+            {
+              "left": "$$",
+              "right": "$$",
+              "display": true
+            }
+          ]
+        }
+      }</script>
+    </d-front-matter>
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/tutorials/">Data on the Brain &amp; Mind Tutorial Track (NeurIPS 2025)</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <!-- [#&lt;Jekyll::Page @relative_path=&quot;404.html&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;_pages/about.md&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;_pages/call.md&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;index.md&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;assets/css/main.scss&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;robots.txt&quot;&gt;, #&lt;Jekyll::Page @relative_path=&quot;_pages/submitting.md&quot;&gt;, #&lt;Jekyll:Archive @type=year @title={:year=&gt;&quot;2025&quot;} @data={&quot;layout&quot;=&gt;&quot;archive-year&quot;}&gt;, #&lt;JekyllRedirectFrom::PageWithoutAFile @relative_path=&quot;redirects.json&quot;&gt;, #&lt;JekyllFeed::PageWithoutAFile @relative_path=&quot;feed.xml&quot;&gt;, #&lt;Jekyll::PaginateV2::Generator::PaginationPage @relative_path=&quot;.html&quot;&gt;, #&lt;Jekyll::PageWithoutAFile @relative_path=&quot;sitemap.xml&quot;&gt;] -->
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <!-- <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/2023/about">about</a>
+              </li> -->
+              <!-- Call -->
+              <!-- <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/2023/call">call</a>
+              </li> -->
+              <!-- submissions -->
+              <!-- <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/2023/submissions/">submissions</a>
+              </li> -->
+              <!-- Blog -->
+              <!-- <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/blog/">blog</a>
+              </li> -->
+              <!-- 2022 -->
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="https://iclr-blog-track.github.io/home/">2022 edition <u>⤤</u></a>
+              </li> -->
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/about/">about</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/call/">call for tutorial</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/submitting/">submitting</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/blog/index.html">blog</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="post distill">
+
+      <d-title>
+        <h1>Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI</h1>
+        <p>A tutorial showcasing a number of (GPU-accelerated) methods for probing the representational alignment of brains, minds, and machines. An exploration of computational modeling methods at the intersection of cognitive neuroscience and artificial intelligence.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <d-contents>
+          <nav class="l-text figcaption">
+          <h3>Contents</h3>
+            <div><a href="#introduction">Introduction</a></div>
+            <div><a href="#chapter-1-intro-to-deepjuice">Chapter 1: Intro to DeepJuice</a></div>
+            <ul>
+              <li><a href="#step-0-environment-setup">Step 0 - Environment Setup</a></li>
+              <li><a href="#conceptual-primer-representational-alignment">Conceptual Primer - Representational Alignment</a></li>
+              <li><a href="#intro-import-the-juice">Intro - Import the Juice</a></li>
+              <li><a href="#step-1-selecting-a-model">Step 1 - Selecting a Model</a></li>
+              <li><a href="#step-2-feature-extraction">Step 2 - Feature Extraction</a></li>
+              <li><a href="#step-3-benchmark-preparation">Step 3 - Benchmark Preparation</a></li>
+              <li><a href="#step-4-alignment-procedures">Step 4 - Alignment Procedures</a></li>
+              <li><a href="#step-5-visualize-your-results">Step 5 - Visualize your Results</a></li>
+              
+            </ul>
+<div><a href="#chapter-2-enter-now-the-llms">Chapter 2: Enter Now the LLMs</a></div>
+            <ul>
+              <li><a href="#cross-modal-brain-alignment">Cross-Modal Brain Alignment</a></li>
+              <li><a href="#vector-semantic-mapping">Vector-Semantic Mapping</a></li>
+              <li><a href="#classification-warmup-example">Classification Warmup Example</a></li>
+              <li><a href="#brain-alignment-with-relative-representations">Brain Alignment with Relative Representations</a></li>
+              
+            </ul>
+<div><a href="#conclusion">Conclusion</a></div>
+            <div><a href="#related-software">Related Software</a></div>
+            
+          </nav>
+        </d-contents>
+
+        <h2 id="introduction">Introduction</h2>
+
+<p>An exploration of the <em>Multi-Modal, Multi-Metric, Many-Model</em> computational modeling methods at the intersection of cognitive neuroscience and artificial intelligence – the emerging field of <strong>NeuroAI</strong>.</p>
+
+<p>Subsequent, updated versions of this tutorial will be made available via GitHub at <a href="https://github.com/ColinConwell/DBM-Tutorial" rel="external nofollow noopener noopener noreferrer" target="_blank">github.com/ColinConwell/DBM-Tutorial</a>.</p>
+
+<hr>
+
+<p><strong>Background</strong>: Understanding how the brain transforms sensory input into representations that support adaptive, real-world behavior has long been a foundational goal of cognitive neuroscience. Developed with an industrial fervor scarcely seen since the days of steel and railroad, task-performant deep neural network (DNN) models have now become a central part of the neuroscientific toolkit – not just as artifacts of engineering, but as <em>theoretical objects</em> whose internal representations can be mapped systematically to biological neural activity <d-cite key="yamins2014performance,kriegeskorte2015deep,kanwisher2023using"></d-cite>. So deep now is the synchrony between AI and neuroscience that some have suggested the emergence of a new field altogether, aptly called <strong>NeuroAI</strong> <d-cite key="zador2023catalyzing"></d-cite>.</p>
+
+<p>In this tutorial, we’ll explore three of NeuroAI’s most actively expanding frontiers: the study of representational alignment between natural and artificial neural systems <d-cite key="sucholutsky2023getting"></d-cite>, the similarity of representation in systems grounded in different modalities (e.g. vision and language) <d-cite key="radford2021learning,huh2024platonic"></d-cite>, and the interpretability of otherwise subsymbolic representations (vision) by way of symbolic references (natural language) <d-cite key="bau2017network"></d-cite>. Along the way, we’ll pay particular focus to the underlying gears and cogs of these methodologies, attempting to see if we can bring the same kinds of optimization to the science of neural modeling that engineers have brought to the development of neural models.</p>
+
+<hr>
+
+<p>The tutorial is organized (roughly) into two chapters:</p>
+
+<ul>
+  <li>
+    <p><strong>Chapter 1: Intro to DeepJuice</strong><br> An introduction to the DeepJuice library, and a reproduction of the main analysis in <d-cite key="conwell2024large"></d-cite>, which probes multiple forms of representational alignment between visual deep neural networks and ventral visual cortex activity in the widely used <a href="https://naturalscenesdataset.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">Natural Scenes Dataset</a> <d-cite key="allen2022massive"></d-cite>.</p>
+  </li>
+  <li>
+    <p><strong>Chapter 2: Enter Now the LLM</strong><br> Exploring the kinds of inferences and analysis made possible by language models, with a case study in cross-modal representational alignment, and language-specified, hypothesis-driven interpretability probes based on vector-semantic mapping with “relative representations” <d-cite key="moschella2022relative"></d-cite>.</p>
+  </li>
+</ul>
+
+<div style="display: flex; align-items: center; gap: 12px;">
+<img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/deepjuice-iconogram.png" alt="DeepJuice Logo" width="128">
+<h2>DeepJuice: High-Throughput (GPU-Accelerated) Brain &amp; Behavioral Modeling</h2>
+</div>
+
+<p>DeepJuice is a library for performing various kinds of readout on deep neural network models. It includes tools and functionality designed specifically for high-throughput model instrumentalization, feature extraction, dimensionality reduction, neural regression, transfer learning, manifold statistics, and mechanistic interpretability. It also includes a large collection of models (and relevant metadata) that allows for controlled experimental comparison across models that vary in theoretically interesting ways.</p>
+
+<p><strong>The Controlled Comparison Approach</strong>: A key methodological insight underlying this work is that we can conceptualize each DNN as a different “model organism” – a unique artificial visual system with performant, human-relevant visual capacities. By comparing sets of models that vary only in one factor (e.g., architecture, task, or training data) while holding other factors constant, we can experimentally examine which inductive biases lead to more or less brain-predictive representations. This approach moves beyond simply ranking models on a leaderboard, toward understanding <em>why</em> certain representations align better with the brain than others.</p>
+
+<p><strong>Target Brain Region</strong>: Our primary target is human <em>occipitotemporal cortex</em> (OTC), a broad swath of high-level ventral visual cortex encompassing category-selective regions for faces, bodies, scenes, and objects. But our interest extends beyond object recognition <em>per se</em> – OTC is increasingly understood as a “feature bank” whose representations support not just categorization but flexible, adaptive behavior across many tasks. The same representations that predict OTC activity may also predict human behavioral similarity judgments, generalization patterns, and semantic associations.</p>
+
+<p>In this walkthrough, we demonstrate the methodology from <d-cite key="conwell2024large"></d-cite> (<a href="https://github.com/ColinConwell/DeepNSD" rel="external nofollow noopener noopener noreferrer" target="_blank">GitHub</a>), which examined representational alignment across 117 diverse DNNs. Here, we work through the analysis pipeline with a single example model – the methods are identical whether applied to one model or one hundred. Our target brain data comes from the <a href="https://naturalscenesdataset.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">Natural Scenes Dataset</a> (NSD; <d-cite key="allen2022massive"></d-cite>) – currently the largest, highest-resolution fMRI dataset available for this purpose.</p>
+
+<p>A reproduction of the first figure (showing an overview of the analysis pipeline) in <d-cite key="conwell2024large"></d-cite> is provided below.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/methods-overview-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/methods-overview-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/methods-overview-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/methods-overview.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="caption">
+Conwell et al. (2024) Figure 1: Methods Overview
+</div>
+
+<ul>
+  <li>In <strong>(A)</strong>, we have an example of our target brain data: occipito-temporal cortex activity (in this case, from a single example subject, colored by a measure of reliability called <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012092" rel="external nofollow noopener noopener noreferrer" target="_blank">NCSNR</a>).</li>
+  <li>In <strong>(B)</strong>, we see a schematic of the underlying model repositories that power our controlled model comparison, grouped by specific axes of experimental interest with implications for the kinds of ‘representational pressures’ that could in theory have played a role in shaping the representations we read in the brain data.</li>
+  <li>In <strong>(C)</strong>, we see a schematic of our representational alignment (“linking”) procedures (classic RSA, encoding RSA – with the figure-implicit encoding models that are fit in between). More detail on all 3 of these below!</li>
+</ul>
+
+<h2 id="step-0-environment-setup">Step 0: Environment Setup</h2>
+
+<p>As <code class="language-plaintext highlighter-rouge">deepjuice</code> remains in active development, the particular setup steps may change over time. For the latest setup steps, please refer to the tutorial’s <a href="https://github.com/ColinConwell/DBM-Tutorial" rel="external nofollow noopener noopener noreferrer" target="_blank">GitHub repo</a>.</p>
+
+<details class="code-fold">
+<summary>Global environment setup</summary>
+
+```python
+import os, sys
+
+tutorial_repo = 'https://github.com/ColinConwell/DBM-Tutorial'
+notebook_path = os.getcwd() # current working directory
+
+try: # to import deepjuice, then check for local clone
+    from deepjuice import SystemStats
+except ImportError as error:
+    print('deepjuice installation not found. Checking for local clone...')
+
+
+DEEPJUICE_DIR = os.path.join(notebook_path, 'DeepJuice')
+if os.path.exists(DEEPJUICE_DIR):
+    sys.path.insert(0, DEEPJUICE_DIR)
+
+else: # raise error directing to repo
+    raise RuntimeError(f"deepjuice not found. Please refer to {tutorial_repo} for setup instructions.")
+```
+
+</details>
+
+<p>Working on a shared machine with multiple GPU devices? DeepJuice at the moment works sufficiently well with a single GPU for testing purposes. In the code below, we’ll modify the global environment to only “see” a single GPU, meaning all subsequent processes will default to using this GPU. Proactively, we’ll set this to be the last available GPU in the list, so as to minimize the likelihood of conflict with concurrent processes or traffic.</p>
+
+<details class="code-fold">
+<summary>GPU device selection</summary>
+
+```python
+from deepjuice.systemops.devices import count_cuda_devices
+
+device_to_use = count_cuda_devices() - 1
+
+if device_to_use &gt;= 0: # no update if no device
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(device_to_use)
+```
+
+</details>
+
+<h2 id="conceptual-primer-representational-alignment">Conceptual Primer: Representational Alignment</h2>
+
+<p>Before diving into the code, it is worth considering the conceptual foundations of what we are trying to measure. <em>Representational alignment</em> refers to the degree of correspondence between internal representations in two systems – in our case, artificial neural networks and the human brain. But how exactly should we quantify this correspondence? And what does it mean when two systems are “aligned”? A recent community effort <d-cite key="sucholutsky2023getting"></d-cite> provides a useful framework. They identify three core questions in alignment research:</p>
+<ol>
+  <li>How do we <em>measure</em> similarity between representations?</li>
+  <li>Do similar representations lead to <em>similar behavior</em>?</li>
+  <li>How can we <em>modify</em> representations to better align them?</li>
+</ol>
+
+<p>This tutorial focuses primarily on the first question, while keeping the others in mind.</p>
+
+<p><strong>The Challenge of Comparison</strong>: Representations in DNNs and brains exist in different coordinate systems, with different dimensionalities, and are accessed through different measurement modalities. Any comparison requires assumptions about what aspects of representation matter. As <d-cite key="sucholutsky2023getting"></d-cite> emphasize, the field has developed many alignment measures, but there is limited consensus on which to use when, or how they relate to each other.</p>
+
+<p><strong>Two Families of Methods</strong>: In this tutorial, we explore two complementary approaches:</p>
+
+<ol>
+  <li>
+    <p><strong>Representational Similarity Analysis (RSA)</strong>: Compares the <em>geometry</em> of representations by asking whether stimuli that are represented as similar in the model are also represented as similar in the brain <d-cite key="kriegeskorte2008representational"></d-cite>. This approach abstracts away from individual features to focus on relational structure – the pattern of distances between stimuli.</p>
+  </li>
+  <li>
+    <p><strong>Encoding Models</strong>: Learns a weighted mapping from model features to brain activity, then evaluates on held-out data <d-cite key="haxby2001distributed"></d-cite>. This approach allows the brain to “select” which model features are relevant, but introduces many degrees of freedom that can make even dissimilar representations appear aligned.</p>
+  </li>
+</ol>
+
+<p>We will use both approaches, as well as hybrid methods (encoding RSA) that combine their strengths. The goal is not to find “the best” metric, but to understand what different metrics reveal about model-brain correspondence.</p>
+
+<p>The powerhouse of all our comparisons will be DeepJuice: a single unified API that combines model zoology, feature extraction, dimensionality reduction, and alignment techniques together in a single, GPU-accelerated package, written in PyTorch, designed for cognitive scientists.</p>
+
+<h2 id="intro-import-the-juice">Intro: Import the Juice</h2>
+
+<p>To get started, let’s load all relevant deepjuice modules below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">deepjuice</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># imports all deepjuice modules
+</span><span class="kn">from</span> <span class="n">deepjuice.first_steps</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># tutorial helpers
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome to DeepJuice!
+</code></pre></div></div>
+
+<h2 id="step-1-selecting-a-model">Step 1: Selecting a Model</h2>
+
+<h3 id="model-options">Model Options</h3>
+
+<p>The first part of most DeepJuice analyses will involve loading a pretrained deep neural network model. In the DeepJuice model zoo (which we affectionally refer to as “the orchard”), you’ll find a large number of different, <em>registered</em> models. <strong>get_model_options()</strong> (the main function from deepjuice/model_zoo) will return a pandas dataframe of the various models we’ve already implemented. Note that while these are the models that will be easiest to use with deepjuice, almost any PyTorch model will work just as well.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># here's a sample of 5 deepjuice models from the model_zoo
+</span><span class="nf">get_model_options</span><span class="p">().</span><span class="nf">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The output of <strong>get_model_options()</strong> can be parsed as a regular pandas dataframe, but you can also throw various arguments in there to return specific subsets of the model zoo, by passing a dictionary of the form {metadata_column_name: search_query}. And if you just want the <strong>unique ID</strong> (<strong>uid</strong>) of the models that can be used to load them, you can ask get_model_options for a list.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># here are a sample of 5 deepjuice models from OpenCLIP
+</span><span class="nf">get_model_options</span><span class="p">({</span><span class="sh">'</span><span class="s">source</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">openclip</span><span class="sh">'</span><span class="p">}).</span><span class="nf">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># here is a list of all available OpenAI clip models in deepjuice:
+</span><span class="nf">get_model_options</span><span class="p">({</span><span class="sh">'</span><span class="s">source</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">clip</span><span class="sh">'</span><span class="p">},</span> <span class="n">output</span><span class="o">=</span><span class="sh">'</span><span class="s">list</span><span class="sh">'</span><span class="p">,</span> <span class="n">exact_match</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['clip_rn50',
+ 'clip_rn101',
+ 'clip_rn50x4',
+ 'clip_rn50x16',
+ 'clip_rn50x64',
+ 'clip_vit_b_32',
+ 'clip_vit_b_16',
+ 'clip_vit_l_14',
+ 'clip_vit_l_14_336px']
+</code></pre></div></div>
+
+<h3 id="load-the-model">Load the Model</h3>
+
+<p>Once you’ve decided on a model to use, just pass the <strong>model_uid</strong> to the following function. Crucially, this function by default will return both the pretrained model and the preprocessing function that should be applied to the data you intend to perform readout over. (Note: If using certain models – like OpenCLIP – in a Colab environment, you may be required to install the relevant packages, e.g. <code class="language-plaintext highlighter-rouge">pip install open_clip_torch</code>.)</p>
+
+<p>For this walkthrough, we’ll be using a pretrained AlexNet model from Harvard Vision Science Laboratory’s <a href="https://github.com/harvard-visionlab/open_ipcl" rel="external nofollow noopener noopener noreferrer" target="_blank">OpenIPCL</a> repository. This model is a self-supervised contrastive learning model trained over the images (but not the labels) of the ImageNet1K dataset.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># list all (Harvard) IPCL models available in deepjuice
+</span><span class="nf">get_model_options</span><span class="p">({</span><span class="sh">'</span><span class="s">model_uid</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">ipcl</span><span class="sh">'</span><span class="p">},</span> <span class="n">output</span><span class="o">=</span><span class="sh">'</span><span class="s">list</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['ipcl_alexnet_gn_imagenet1k',
+ 'ipcl_alexnet_gn_openimagesv6',
+ 'ipcl_alexnet_gn_places2',
+ 'ipcl_alexnet_gn_vggface2',
+ 'ipcl_alexnet_gn_mixedx3']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_uid</span> <span class="o">=</span> <span class="sh">'</span><span class="s">ipcl_alexnet_gn_imagenet1k</span><span class="sh">'</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="nf">get_deepjuice_model</span><span class="p">(</span><span class="n">model_uid</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Critically, almost all deepjuice functionality is predicated on the model object having a forward function that is called directly over an input tensor as follows: model(inputs). All <em>registered</em> models in DeepJuice have this property implicitly specified, but if you’re using a custom model, or want a variation of the function, you can always specify your own!</p>
+
+<h2 id="step-2-feature-extraction">Step 2: Feature Extraction</h2>
+
+<p>You’ve now loaded a model and you want to know how the model responds to a given set of inputs – potentially at more than one stage of the model’s information-processing hierarchy. This procedure is typically called feature extraction, and involves saving the intermediate outputs of one or more of a model’s many layers.</p>
+
+<p>In the example below, we’ll grab some sample images, and pass them through our loaded model, collecting both features and feature metadata as we do. This is a relatively small set of inputs, but just note that feature extraction procedures can get very computationally expensive very fast. We’ll discuss how to manage this overhead in the <strong>Memory Management</strong> subsection below.</p>
+
+<h3 id="datasets--metadata">DataSets + MetaData</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">juicyfruits</span> <span class="kn">import</span> <span class="n">get_sample_images</span>
+
+<span class="c1"># let's grab a quick sample of 5 images
+</span><span class="n">sample_image_paths</span> <span class="o">=</span> <span class="nf">get_sample_images</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">.</span><span class="nf">join</span><span class="p">([</span><span class="sh">"</span><span class="s">   Sample image paths:</span><span class="sh">"</span><span class="p">,</span> <span class="o">*</span><span class="p">[</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">relpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="p">.</span><span class="nf">getcwd</span><span class="p">())</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">sample_image_paths</span><span class="p">]]))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Initializing DeepJuice Benchmarks
+   Sample image paths:
+DeepJuice/juicyfruits/quick_data/image/vislab_logo.jpg
+DeepJuice/juicyfruits/quick_data/image/william_james.jpg
+DeepJuice/juicyfruits/quick_data/image/grace_hopper.jpg
+DeepJuice/juicyfruits/quick_data/image/xaesthetics_logo.jpg
+DeepJuice/juicyfruits/quick_data/image/viriginia_woolf.jpg
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># let's get our dataloader now, which takes our image_paths
+# and! our model preprocessing function, returning tensors
+</span><span class="n">dataloader</span> <span class="o">=</span> <span class="nf">get_data_loader</span><span class="p">(</span><span class="n">sample_image_paths</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># let's start by getting all our model's feature maps, since we have only a small number of images:
+# get_feature_maps requires only two arguments in this case: model, inputs (in this case, our dataloader)
+</span>
+<span class="n">feature_maps</span> <span class="o">=</span> <span class="nf">get_feature_maps</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1">#flatten=False for visualization
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting sample maps with torchinfo:
+  (Moving tensors from CUDA:0 to CPU)
+DeepJuice:INFO (_log) - Keeping 26 / 36 total maps (10 duplicates removed).
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># note that we can also add the argument dry_run=True
+# to get a quick report about our extraction
+</span><span class="nf">get_feature_maps</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting sample maps with torchinfo:
+  (Moving tensors from CUDA:0 to CPU)
+DeepJuice:INFO (_log) - Keeping 26 / 36 total maps (10 duplicates removed).
+get_feature_maps() Dry Run Information
+  # Inputs: 5; # Feature Maps: 26
+  # Duplicates (Removed): 10
+  Total memory required: 40.02 MB
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># what do our feature_maps look like?
+</span><span class="k">for</span> <span class="n">layer_index</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">)</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">feature_maps</span><span class="p">.</span><span class="nf">items</span><span class="p">()):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">layer_index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">feature_map</span><span class="p">.</span><span class="n">shape</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 Conv2d-2-1 [5, 96, 55, 55]
+2 GroupNorm-2-2 [5, 96, 55, 55]
+3 ReLU-2-3 [5, 96, 55, 55]
+4 MaxPool2d-2-4 [5, 96, 27, 27]
+5 Conv2d-2-5 [5, 256, 27, 27]
+...
+24 ReLU-2-24 [5, 4096]
+25 Linear-2-25 [5, 128]
+26 Normalize-1-10 [5, 128]
+</code></pre></div></div>
+
+<p>Now that we’ve had a first look at our feature_map extraction procedure, let’s have a look at our feature_map metadata – which gives us other key information about we might need later on.</p>
+
+<p>Note that a key argument for all of Deepjuice’s <em>metadata</em> operations is the <em>input_dim</em> argument (sometimes called batch_dim by other packages like TorchInfo). This tells us which dimension of the input corresponds to the number of stimuli in our dataset. This is almost always 0 (the DeepJuice default), but not always, so caveat emptor! Specifying the <em>input_dim</em> allows us to do things like flattening in further downstream processing.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">feature_map_metadata</span> <span class="o">=</span> <span class="nf">get_feature_map_metadata</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="memory-management">Memory Management</h3>
+
+<p>Due to the memory limitations of most machines, it will in the vast majority of cases be impossible to extract all the feature maps from a candidate model all at once. For this reason, DeepJuice is built with a number of tools that help manage the memory load of the feature extraction procedure.</p>
+
+<p>The primary tool in this toolkit is the <strong>FeatureExtractor</strong> class.</p>
+
+<p>The FeatureExtractor class works by taking a model, inputs combination and precomputing how much necessary is necessary to extract each feature map. It automatically batches these maps according either to an automated procedure or a user specified <em>memory_limit</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># let's imagine here that you have a system with EXTREMELY low RAM available
+</span><span class="n">feature_extractor</span> <span class="o">=</span> <span class="nc">FeatureExtractor</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="sh">'</span><span class="s">12MB</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extracting sample maps with torchinfo:
+  (Moving tensors from CUDA:0 to CPU)
+FeatureExtractor Handle for alexnet_gn
+  36 feature maps (+10 duplicates); 5 inputs
+  Memory required for full extraction: 45.21 MB
+  Memory usage limiting device set to: cpu
+  Memory usage limit currently set to: 12.00 MB
+  5 batches required for current memory limit 
+   Batch-001: 3 feature maps; 6.88 MB 
+   Batch-002: 2 feature maps; 11.10 MB 
+   Batch-003: 4 feature maps; 9.28 MB 
+   Batch-004: 8 feature maps; 11.83 MB 
+   Batch-005: 19 feature maps; 6.12 MB
+</code></pre></div></div>
+
+<p>Given that the vast majority of users will need the kind of memory management facilitated by FeatureExtractor, let’s see how it works in action below. Once instantiated with a model and inputs, FeatureExtractor acts as a generator, and can be called in a for loop as with any other generator.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">deepjuice.tensorops</span> <span class="kn">import</span> <span class="n">flatten_along_axis</span> <span class="k">as</span> <span class="n">flatten_tensor</span>
+
+<span class="n">total_feature_count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># across the nonduplicate layers
+</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">feature_maps</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">feature_extractor</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">Batch </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="nf">len</span><span class="p">(</span><span class="n">feature_maps</span><span class="p">)</span><span class="si">}</span><span class="s"> Maps</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">uid</span><span class="p">,</span> <span class="n">feature_map</span> <span class="ow">in</span> <span class="n">feature_maps</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="n">feature_map</span> <span class="o">=</span> <span class="nf">flatten_tensor</span><span class="p">(</span><span class="n">feature_map</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">total_feature_count</span> <span class="o">+=</span> <span class="n">feature_map</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">  Total Feature Count:</span><span class="sh">'</span><span class="p">,</span> <span class="n">total_feature_count</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Batch 0: 3 Maps
+Batch 1: 2 Maps
+Batch 2: 4 Maps
+Batch 3: 8 Maps
+Batch 4: 19 Maps
+  Total Feature Count: 2367456
+</code></pre></div></div>
+
+<h2 id="step-3-benchmark-preparation">Step 3: Benchmark Preparation</h2>
+
+<p>So far, we’ve been extracting our <em>feature_maps</em> on a random sample of images. In reality, what we’ll more typically be doing is extracting our feature_maps over a stimulus set designed for a candidate brain or behavioral experiment we want to model. Below, we’ll use the real-world case of the <a href="https://naturalscenesdataset.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">7T fMRI Natural Scenes Dataset (NSD)</a> as an example.</p>
+
+<h3 id="benchmark-classes">Benchmark Classes</h3>
+
+<p>The easiest way to deal with benchmark data (the target brain or behavioral data that you’ll be comparing your extracted feature_maps against) is (in our humble opinion) with a class object. Here’s an example of one such object below, which loads some sample data from one subject’s early visual and occitemporal cortex in response to 1000 images.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">juicyfruits</span> <span class="kn">import</span> <span class="n">NSDBenchmark</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="nc">NSDBenchmark</span><span class="p">()</span> <span class="c1">#load brain data benchmark
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Loading DeepJuice NSDBenchmark: 
+  Image Set: shared1000
+  Voxel Set: ['EVC', 'OTC']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">benchmark</span> <span class="c1"># general info about the benchmark
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NSD Human fMRI Benchmark Data
+ Macro ROI(s): ['EVC', 'OTC']
+ SubjectID(s): [1]
+ # Probe Stimuli: 1000
+ # Responding Voxels: 11967
+ Largest ROI Constituents:
+   OTC: 7310 Voxels
+   EVC: 4657 Voxels
+   EBA: 2525 Voxels
+</code></pre></div></div>
+
+<p>The pleasantry of a benchmark class is that you can do all sorts of intuitive things with it – without actually having to wrangle the underlying data components each time you want to do something.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># want a random sample stimulus?
+</span><span class="n">benchmark</span><span class="p">.</span><span class="nf">get_stimulus</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-36-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-36-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-36-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-36-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># want a target sample stimulus?
+</span><span class="n">benchmark</span><span class="p">.</span><span class="nf">get_stimulus</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-37-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-37-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-37-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-37-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>A typically crucial piece of any brain dataset (and especially fMRI) are ‘regions of interests’ (ROIs). Our benchmark class here catalogues these automatically, and comes equipped with key functions that allow us to subset those parts of the brain data that correspond to each ROI.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">benchmark</span><span class="p">.</span><span class="nf">get_roi_structure</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="sh">'</span><span class="s">global</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Level 0:ROI EVC, OTC, V1v, V1d, V2v, V2d, V3v, V3d, hV4, FFA-1, FFA-2
+              OFA, EBA, FBA-1, FBA-2, OPA, PPA, VWFA-1, VWFA-2, OWFA
+Level 1:SubjectID 1
+</code></pre></div></div>
+
+<h3 id="core-components">Core Components</h3>
+
+<p>Admittedly, though, classes can be hard to work with. For that reason, let’s break down the 3 core components to any benchmark:</p>
+<ol>
+  <li>Response Data: (BrainUnitID x StimulusID)</li>
+  <li>Metadata: (BrainUnitID x …)</li>
+  <li>Stimulus Data: (StimulusID x…)</li>
+</ol>
+
+<p><em>response_data</em> is the most important of these 3 components. In the case of a <strong>BrainBenchmark</strong> (like <strong>NSDBenchmark</strong>), the rows of this dataframe are the IDs of a target brain units (sometimes called “neuroids” by benchmarking platforms like BrainScore), the columns of this dataframe are the IDs of our target stimuli, and each cell is the response of a given brain unit (in this case voxels) to a target stimulus (in this case, a natural image).</p>
+
+<h2 id="step-4-alignment-procedures">Step 4: Alignment Procedure(s)</h2>
+
+<p>You have your benchmark data; you have your features. Now, it is time to put the two together. While many people refer to this step with many different names – correspondence test, encoding or decoding, representational similarity analysis – in DeepJuice, we tend to call it the “alignment procedure.” We use this term with the most general connotation possible, or at least the one we hope generalizes over the many different forms this particular step can take.</p>
+
+<p><strong>Why Multiple Metrics?</strong> A striking finding in recent work is that many qualitatively different DNN models – with different architectures, tasks, and training data – achieve comparably high alignment scores with human visual cortex. This relative parity suggests that standard alignment metrics may be capturing broad, shared structure rather than the specific computational principles that distinguish models. Using multiple metrics with different assumptions can help reveal whether apparent alignment reflects genuine correspondence or simply the flexibility of the linking procedure.</p>
+
+<p>In the example below (which directly follows the analyses from <d-cite key="conwell2024large"></d-cite>), we run three styles of alignment procedure:</p>
+
+<ul>
+  <li>
+    <p><strong>Classical RSA (cRSA)</strong>: A paradigmatic representational similarity analysis that directly computes the representational geometry of the target brain and model data (using the Pearson distance), then directly compares the resultant representational dissimilarity matrices (RDMs) with no intermediate reweighting (again using the Pearson distance). This analysis assumes a fully-emergent fit between model and brain that weights all model features equally, and in this sense is one of the stricter tests of alignment one can use.</p>
+  </li>
+  <li>
+    <p><strong>Encoding Regression (eReg)</strong>: This alignment procedure unfurls in multiple steps. First, for computational efficiency and to control <em>explicit</em> degrees of freedom, we use a dimensionality reduction technique called sparse random projection to project each of our feature maps into a lower-dimensional space. This step relies on the <strong>Johnson-Lindenstrauss Lemma</strong> <d-cite key="johnson1984extensions"></d-cite>, a theorem guaranteeing that points in a high-dimensional space can be embedded into a lower-dimensional space while approximately preserving pairwise distances. Crucially, the target dimension depends logarithmically on the number of samples (images), not the original feature dimension. After reducing the dimensionality of our feature space, we apply ridge regression to the reduced features.</p>
+  </li>
+  <li>
+    <p><strong>Encoding RSA (eRSA)</strong>: Elsewhere developed as <strong>feature-reweighted RSA</strong> <d-cite key="kaniuth2022feature"></d-cite>, this alignment procedure is a way of taking the encoding models from the ridge regression procedure above, and using them to build RDMs. This procedure liberates our RSA from the assumption that all features must be weighted equally, and leverages the trimming and redistribution of feature importances done by the encoding model to give us a more explicitly brain-aligned representational geometry.</p>
+  </li>
+</ul>
+
+<p>Below is a more detailed visual schematic of these methods:</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/metrics-schematic-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/metrics-schematic-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/metrics-schematic-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/metrics-schematic.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="caption">
+Alignment Methods Schematic
+</div>
+
+<p>Of course, scoring the alignment between a given model’s feature space and the brain doesn’t necessarily tell us all that we’d like to know. Once we’ve scored the alignment across many feature spaces from a single model (or from many models), we’d ideally like to know why certain feature spaces score higher than others.</p>
+
+<p>There are obviously many theories for this, but in the example below, we’ll look at one increasingly popular candidate called <strong>effective dimensionality</strong>, which quantifies how the variance in a given feature space is distributed across its principal components. This metric has been linked to generalization performance in neural networks and the dimensionality of neural representations in the brain <d-cite key="elmoznino2024high"></d-cite>.</p>
+
+<h3 id="prepare-benchmark-data">Prepare Benchmark Data</h3>
+
+<p>The first thing we’ll need to do to be able to run our alignment procedure is to compute the target RDMs from our target brain data. If we’ve already specified ROIs in this data, we can compute these RDMs simply by passing an RDM function (i.e. a squareform distance metric) to a convenience function from our benchmark class.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">deepjuice.alignment</span> <span class="kn">import</span> <span class="n">compute_rdm</span>
+<span class="n">benchmark</span><span class="p">.</span><span class="nf">build_rdms</span><span class="p">(</span><span class="n">compute_rdm</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="sh">'</span><span class="s">pearson</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="score-the-feature-maps">Score the Feature Maps</h3>
+
+<p>And now, in one grand swoop, we’re going to use our <strong>Benchmark()</strong> and our <strong>FeatureExtractor()</strong> to loop through all <em>feature_maps</em> and score them on the alignment procedures outlined above.</p>
+
+<details class="code-fold">
+<summary>Define: get_benchmarking_results() + helpers</summary>
+
+```python
+from deepjuice.alignment import get_scoring_method
+
+def effective_dimensionality(feature_map):
+    # first, we define a GPU-capable PCA
+    pca = TorchPCA(device='cuda:0')
+
+    # then fit the PCA...
+    pca.fit(feature_map)
+
+    # then extract the eigenspectrum
+    eigvals = pca.explained_variance_
+
+    # then return effective dimensionality (on CPU)
+    return (eigvals.sum() ** 2 / (eigvals ** 2).sum()).item()
+
+def get_benchmarking_results(benchmark, feature_extractor,
+                             layer_index_offset = 0,
+                             metrics = ['cRSA','eReg','eRSA'],
+                             rdm_distance = 'pearson',
+                             rsa_distance = 'pearson',
+                             score_types = ['pearsonr'],
+                             stack_final_results = True,
+                             feature_map_stats = None,
+                             alpha_values = np.logspace(-1,5,7).tolist(),
+                             regression_means = True, device='auto'):
+    # ... (full implementation in notebook)
+    pass
+```
+
+</details>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stats</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">effective_dimensionality</span><span class="sh">'</span><span class="p">:</span> <span class="n">effective_dimensionality</span><span class="p">}</span> <span class="c1"># stats to compute over features
+</span><span class="n">results</span> <span class="o">=</span> <span class="nf">get_benchmarking_results</span><span class="p">(</span><span class="n">benchmark</span><span class="p">,</span> <span class="n">feature_extractor</span><span class="p">,</span> <span class="n">feature_map_stats</span> <span class="o">=</span> <span class="n">stats</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="parse-results-scores">Parse Results (Scores)</h3>
+
+<p>The results you now have are comprehensive, but complicated: one score per feature map (layer) per ROI per subject per train-test split per metric. If you’re doing analyses across multiple models, you’ll then multiply these combinatorics even further with scores per model. Generally speaking – and while this choice comes with assumptions the field should probably start examining a bit more closely – most model-to-brain alignment procedures include the taking of a max over layers.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">deepjuice.benchmark</span> <span class="kn">import</span> <span class="n">get_results_max</span>
+
+<span class="c1"># variables over which we'll take the max:
+</span><span class="n">max_over</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">model_layer</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="c1"># all variables for which we want the max:
+</span><span class="n">group_vars</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">metric</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">subj_id</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="c1"># criterion is the column in results that is used to select the maxs
+</span><span class="nf">get_results_max</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span> <span class="n">group_vars</span><span class="p">,</span> <span class="n">max_over</span><span class="p">,</span>
+                <span class="n">criterion</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">train</span><span class="sh">'</span><span class="p">},</span> <span class="n">filters</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">EVC</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">OTC</span><span class="sh">'</span><span class="p">]})</span>
+</code></pre></div></div>
+
+<h2 id="step-5-visualize-your-results">Step 5: Visualize your Results</h2>
+
+<p>So now, we have some results! What do you do with them? Contribute to the advancement of knowledge, ideally. But first! Let’s start with some plots, and a bit of analysis.</p>
+
+<details class="code-fold">
+<summary>Import plotnine (ggplot)</summary>
+
+```python
+from plotnine import * # python's ggplot
+import plotnine.options as ggplot_opts
+```
+
+</details>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># these are the results columns we'll need for plot
+</span><span class="n">target_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">model_layer</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">,</span>
+               <span class="sh">'</span><span class="s">subj_id</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">effective_dimensionality</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="n">target_region</span> <span class="o">=</span> <span class="sh">'</span><span class="s">OTC</span><span class="sh">'</span> <span class="c1"># first, we'll look at occipitotemporal cortex
+</span>
+<span class="c1"># we subset our results for our region of interest:
+</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">results</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="sh">'</span><span class="s">region == @target_region</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="c1"># here, we convert model_layer_index into a relative depth (0 to 1)
+</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">]</span> <span class="o">/</span>
+                                  <span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">].</span><span class="nf">max</span><span class="p">())</span>
+
+<span class="n">ggplot_opts</span><span class="p">.</span><span class="n">figure_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># set figure size
+</span>
+<span class="c1"># this defines our plotting geometry / aesthetics
+</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span>
+           <span class="sh">'</span><span class="s">group</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">color</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="c1"># and now, we invoke python's ggplot via plotnine!
+</span><span class="p">(</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="o">**</span><span class="n">mapping</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+ <span class="nf">facet_wrap</span><span class="p">(</span><span class="sh">'</span><span class="s">~metric</span><span class="sh">'</span><span class="p">)</span><span class="o">+</span> <span class="nf">theme_bw</span><span class="p">()).</span><span class="nf">draw</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-82-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-82-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-82-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-82-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>Here, we see that (pretty much up until the last layers) our scores for occipitotemporal cortex (OTC) tend to increase. (The dropoff in the last layers is a byproduct of the fact that we’re working with a self-supervised model in this demo, and these layers correspond to the projection head of the model – whose features aren’t always particularly useful or predictive). Now, let’s look at the same plot with the addition of early visual cortex (EVC):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">target_region</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">EVC</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">OTC</span><span class="sh">'</span><span class="p">]</span> <span class="c1"># now, we add early visual cortex
+</span>
+<span class="n">plot_data</span> <span class="o">=</span> <span class="n">results</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="sh">'</span><span class="s">region == @target_region</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">]</span> <span class="o">/</span>
+                                  <span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">].</span><span class="nf">max</span><span class="p">())</span>
+
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span>
+           <span class="sh">'</span><span class="s">group</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">color</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="n">mapping</span><span class="p">[</span><span class="sh">'</span><span class="s">linetype</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">region</span><span class="sh">'</span> <span class="c1"># for comparison
+</span>
+<span class="p">(</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="o">**</span><span class="n">mapping</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+ <span class="nf">facet_grid</span><span class="p">(</span><span class="sh">'</span><span class="s">cv_split~metric</span><span class="sh">'</span><span class="p">)</span><span class="o">+</span> <span class="nf">theme_bw</span><span class="p">()).</span><span class="nf">draw</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-83-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-83-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-83-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-83-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>Here, we see that predictions for EVC tend to peak earlier than they do for late-stage visual cortex (OTC) – though not by as much as you might otherwise expect… (While we don’t have time to go too deeply into this result here, if you’re interested in following-up on this, a good place to start would be to consider receptive field sizes!)</p>
+
+<p>Finally, let’s look at the relationship between effective dimensionality and score across layers:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">target_region</span> <span class="o">=</span> <span class="sh">'</span><span class="s">OTC</span><span class="sh">'</span> <span class="c1"># just occipitotemporal cortex again
+</span>
+<span class="c1"># we subset our results for our region of interest:
+</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">results</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="sh">'</span><span class="s">region == @target_region</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">effective_dimensionality</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span>
+           <span class="sh">'</span><span class="s">group</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">color</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="p">(</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="o">**</span><span class="n">mapping</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+ <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="sh">'</span><span class="s">lm</span><span class="sh">'</span><span class="p">)</span> <span class="o">+</span> <span class="nf">facet_wrap</span><span class="p">(</span><span class="sh">'</span><span class="s">~metric</span><span class="sh">'</span><span class="p">)</span><span class="o">+</span> <span class="nf">theme_bw</span><span class="p">()).</span><span class="nf">draw</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-84-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-84-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-84-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-84-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>Here, we see effectively no relationship. Why? Well, the reasons are complex, and full enumeration thereof is beyond the scope of this tutorial – but one function it serves here, at least, is to highlight that downstream alignment (at least to this very popular visual brain data) is not always 1:1 with what you might expect from the effective “degrees of freedom” inherent to the feature space of a candidate model.</p>
+
+<hr>
+
+<h1 id="enter-now-the-llms">Enter Now the LLMs</h1>
+
+<h2 id="cross-modal-brain-alignment">Cross-Modal Brain Alignment</h2>
+
+<p>Recent success predicting human ventral visual system responses from large language model (LLM) representations of image captions has sparked renewed interest in the possibility that high-level visual representations are “aligned to language” <d-cite key="wang2023better,doerig2025high"></d-cite>. This finding is striking: models trained <em>only</em> on text, with no visual input whatsoever, can predict activity in the <em>visual</em> cortex as well as models trained directly on images.</p>
+
+<p><strong>What might explain this convergence?</strong> One hypothesis, articulated in the “Platonic Representation Hypothesis” <d-cite key="huh2024platonic"></d-cite>, suggests that neural networks trained on different modalities may be converging toward a shared statistical model of reality – not because they learn from each other, but because they are all learning to represent the same underlying world structure. An alternative interpretation is more deflationary: perhaps alignment procedures exploit the many degrees of freedom in large models, and apparent convergence reflects shared co-occurrence statistics rather than deeper representational similarity. This echoes the classic <em>symbol-grounding problem</em> <d-cite key="harnad1990symbol"></d-cite>, questioning whether models learn “meaning” or merely statistical patterns in symbols.</p>
+
+<p>Recent work has begun to dissect this question more carefully. <d-cite key="shoham2024using"></d-cite> provide evidence that suggests language-vision alignment in neural networks emerges primarily through relational structure (how concepts relate to each other) rather than low-level feature similarity. <d-cite key="xu2025large"></d-cite> demonstrate that LLMs without visual grounding can recover <em>non-sensorimotor</em> features of human concepts (e.g., abstract relations) but struggle with <em>sensorimotor</em> features (e.g., shape, texture) – suggesting that cross-modal alignment may be partial and selective.</p>
+
+<p>These findings raise important questions: Which aspects of representation are shared across modalities, and which are modality-specific? In this chapter, we demonstrate techniques for probing cross-modal alignment using the same NSD data from Chapter 1.</p>
+
+<p>In this section, we walk through an example of cross-modal alignment using the same subset of the NSD dataset as before. Language models can be loaded through DeepJuice, but for demonstration purposes, we load a sentence transformer model from Huggingface directly.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModel</span>
+
+<span class="n">model_uid</span> <span class="o">=</span> <span class="sh">'</span><span class="s">sentence-transformers/all-MiniLM-L6-v2</span><span class="sh">'</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="p">.</span><span class="nf">from_pretrained</span><span class="p">(</span><span class="n">model_uid</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="nf">from_pretrained</span><span class="p">(</span><span class="n">model_uid</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Each of the images in the NSD dataset is actually an image from the COCO dataset, and each image in the COCO dataset comes with 5-6 human annotations (captions). By default (at least in the NSD metadata), the COCO captions are stored as stringified lists.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">deepjuice.structural</span> <span class="kn">import</span> <span class="n">flatten_nested_list</span> <span class="c1"># utility for list flattening
+</span>
+<span class="n">all_captions</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">.</span><span class="n">stimulus_data</span><span class="p">.</span><span class="n">coco_captions</span><span class="p">.</span><span class="nf">tolist</span><span class="p">()</span> <span class="c1"># list of strings
+</span>
+<span class="c1"># the listification and flattening of our 5 captions per image into one big list:
+</span><span class="n">captions</span> <span class="o">=</span> <span class="nf">flatten_nested_list</span><span class="p">([</span><span class="nf">eval</span><span class="p">(</span><span class="n">captions</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span> <span class="k">for</span> <span class="n">captions</span> <span class="ow">in</span> <span class="n">all_captions</span><span class="p">])</span>
+
+<span class="nf">assert</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">captions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># assertion to ensure each image has 5 captions
+</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">captions</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span><span class="nf">tolist</span><span class="p">()</span> <span class="c1"># a sample showing what our captions look like
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Two children standing next to a yellow fire hydrant',
+ 'Skier skiing down a hill near a guard rail ',
+ 'A suitcase on a bed with a cat sitting inside of it.',
+ 'A man riding a surfboard on top of a wave in the ocean.',
+ 'a train being worked on in a train manufacturer']
+</code></pre></div></div>
+
+<p>Pretty much everything from here forward matches exactly the benchmarking procedure above! In this example, we’ll calculate the cRSA, SRPR, and eRSA score for our target set of language embeddings, saving the results for two key ROIs (early visual and occipitotemporal cortex) for the purposes of downstream comparison:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">target_region</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">EVC</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">OTC</span><span class="sh">'</span><span class="p">]</span> <span class="c1"># early and late visual cortex
+</span>
+<span class="n">plot_data</span> <span class="o">=</span> <span class="n">results</span><span class="p">.</span><span class="nf">copy</span><span class="p">()[</span><span class="n">results</span><span class="p">[</span><span class="sh">'</span><span class="s">cv_split</span><span class="sh">'</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">].</span><span class="nf">query</span><span class="p">(</span><span class="sh">'</span><span class="s">region == @target_region</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="c1"># this gives us a "depth ratio" from 0 (earliest layer) to 1 (latest)
+</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">]</span> <span class="o">/</span> 
+                                  <span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">model_layer_index</span><span class="sh">'</span><span class="p">].</span><span class="nf">max</span><span class="p">())</span>
+
+<span class="c1"># putting our metrics in order as a factor (Categorical)
+</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">metric</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">Categorical</span><span class="p">(</span><span class="n">plot_data</span><span class="p">[</span><span class="sh">'</span><span class="s">metric</span><span class="sh">'</span><span class="p">],</span> 
+                                     <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">cRSA</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">eReg</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">eRSA</span><span class="sh">'</span><span class="p">])</span>
+
+<span class="kn">from</span> <span class="n">plotnine</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># ggplot functionality
+</span>
+<span class="c1"># define an aesthetic mapping for ggplot call:
+</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">model_layer_depth</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">score</span><span class="sh">'</span><span class="p">,</span> 
+           <span class="sh">'</span><span class="s">group</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">color</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">region</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="p">(</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="o">**</span><span class="n">mapping</span><span class="p">))</span> <span class="o">+</span> 
+ <span class="nf">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span><span class="nf">facet_wrap</span><span class="p">(</span><span class="sh">'</span><span class="s">~metric</span><span class="sh">'</span><span class="p">)</span><span class="o">+</span> <span class="nf">theme_bw</span><span class="p">()).</span><span class="nf">draw</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-94-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-94-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-94-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-94-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>Notice here that language models do exceptionally well in predicting late-stage visual cortex (OTC), but not so well in predicting early visual cortex (EVC)! This is a nice sanity check, and suggests the high scores in late-stage visual cortex are indeed the result of shared representational structure, as opposed to a mere statistical fluke.</p>
+
+<h2 id="vector-semantic-mapping">Vector-Semantic Mapping</h2>
+
+<p><em>Hypothesis-driven interpretation via “relative representations”</em> <d-cite key="moschella2022relative"></d-cite></p>
+
+<p>The use of deep neural network models to predict brain and behavioral phenomena typically involves procedures that operate over dense, high-dimensional vectors whose underlying structure is largely opaque. However accurate these procedures may be in terms of raw predictive power, this ambiguity leaves open fundamental questions about what drives the measured correspondence between model and brain.</p>
+
+<p><strong>The Core Idea</strong>: <d-cite key="moschella2022relative"></d-cite> proposed <em>relative representations</em> as an alternative to working with absolute embedding coordinates. The key insight is elegant: rather than describing each data point by its coordinates in a high-dimensional space, describe it by its <em>similarity to a fixed set of anchor points</em>. In their words:</p>
+<blockquote>
+  <p>“We propose the latent similarity between each sample and a fixed set of anchors as an alternative data representation.”</p>
+</blockquote>
+
+<p>This move toward <strong>interpretable</strong> alignment allows us to bridge the gap between opaque neural features and grounded semantic concepts.</p>
+
+<p><strong>Anchor Points as a Coordinate System</strong>: Think of this as defining a new coordinate system where each axis is “similarity to anchor X.” If we choose our anchors wisely – using natural language queries that correspond to interpretable concepts – then the resulting representation is both lower-dimensional and human-readable. Each dimension has a clear meaning: “how much does this image resemble [query]?”</p>
+
+<p><strong>Connection to Zero-Shot Classification</strong>: This technique is closely related to how CLIP performs zero-shot classification <d-cite key="radford2021learning"></d-cite>. CLIP classifies images by computing similarity to text embeddings of category labels, then taking the argmax. Here, we extend this idea: instead of taking an argmax for classification, we use the full vector of similarities as features for downstream prediction.</p>
+
+<p>We will use this technique to probe what kinds of semantic information (expressible in natural language) drives the predictive power of LLMs for visual brain activity.</p>
+
+<h2 id="classification-warmup-example">Classification Warmup Example</h2>
+
+<p>Below is a schematic of the basic idea of vector-semantic mapping using relative representations, applied to the binary classification task of <a href="https://huggingface.co/datasets/cats_vs_dogs" rel="external nofollow noopener noopener noreferrer" target="_blank">cat and dog images</a> based on the embeddings of a CLIP-like vision encoder.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-classifier-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-classifier-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-classifier-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-classifier.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="caption">
+Relative Representations Classifier
+</div>
+
+<p>Relative representations are a way to quickly warp high-dimensional embeddings into new (lower-dimensional) coordinates defined by a set of custom queries (also called anchor points).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="nf">get_available_device</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Using device: </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">model</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">open_clip</span><span class="p">.</span><span class="nf">create_model_and_transforms</span><span class="p">(</span><span class="sh">'</span><span class="s">ViT-B-16-SigLIP</span><span class="sh">'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="sh">'</span><span class="s">webli</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">eval</span><span class="p">().</span><span class="nf">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">open_clip</span><span class="p">.</span><span class="nf">get_tokenizer</span><span class="p">(</span><span class="sh">'</span><span class="s">ViT-B-16-SigLIP</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="n">hf_data</span> <span class="o">=</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="sh">'</span><span class="s">cats_vs_dogs</span><span class="sh">'</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="sh">'</span><span class="s">../datasets</span><span class="sh">'</span><span class="p">)[</span><span class="sh">'</span><span class="s">train</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">image_dataset</span> <span class="o">=</span> <span class="nc">ImageDataset</span><span class="p">(</span><span class="n">hf_data</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">,</span> <span class="n">image_key</span><span class="o">=</span><span class="sh">'</span><span class="s">image</span><span class="sh">'</span><span class="p">,</span> <span class="n">label_key</span><span class="o">=</span><span class="sh">'</span><span class="s">labels</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="n">image_loader</span> <span class="o">=</span> <span class="nc">DataLoader</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using device: cuda
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">A sample of dog and cat images:</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">image_dataset</span><span class="p">.</span><span class="nf">show_sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-98-output-2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-98-output-2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-98-output-2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-98-output-2.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<h3 id="binary-classification-with-full-embeddings">Binary Classification with Full Embeddings</h3>
+
+<p>We now have the dataset we can use to perform our binary classification task. First, we’ll split our embeddings (and their associated category labels) into train and test sets…</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">embeds</span> <span class="o">=</span> <span class="n">embeds</span><span class="p">.</span><span class="nf">to</span><span class="p">(</span><span class="sh">'</span><span class="s">cpu</span><span class="sh">'</span><span class="p">)</span> <span class="c1"># move to cpu, just in case
+</span>
+<span class="c1"># use odd / even indices for train / test split:
+</span><span class="n">train_X</span><span class="p">,</span> <span class="n">test_X</span> <span class="o">=</span> <span class="n">embeds</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="n">embeds</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>… then, we fit our classifier (a regularized logistic regression with internal cross-validation to select the regularization parameter, alpha).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clf</span> <span class="o">=</span> <span class="nc">RidgeClassifierCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">])</span>
+<span class="n">clf</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Binary Classification Accuracy:</span><span class="sh">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="nf">score</span><span class="p">(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">test_y</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Binary Classification Accuracy:
+0.9976078598889363
+</code></pre></div></div>
+
+<h3 id="classification-with-relative-representations">Classification with Relative Representations</h3>
+
+<p>Now we arrive at the key technique. Instead of classifying over the full 768-dimensional embedding space, we project images into a lower-dimensional space defined by <em>similarity to language queries</em>. As <d-cite key="moschella2022relative"></d-cite> demonstrated, this relative representation has a powerful property: it is invariant to isometric transformations of the original embedding space.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">query_strings</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">has fur</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">has scales</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">has wings</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">has pointy ears</span><span class="sh">'</span><span class="p">,</span>
+                 <span class="sh">'</span><span class="s">is bigger</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">is smaller</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">lives indoors</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">lives outdoors</span><span class="sh">'</span><span class="p">]</span>
+
+<span class="n">query_embeds</span> <span class="o">=</span> <span class="nf">get_query_embeds</span><span class="p">(</span><span class="n">query_strings</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Query Embeddings Shape:</span><span class="sh">'</span><span class="p">,</span> <span class="n">query_embeds</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Query Embeddings Shape: torch.Size([8, 768])
+</code></pre></div></div>
+
+<p>After embedding our language queries, we compute their cosine similarity to each image embedding. But now, instead of using softmax over similarity scores, we use them as features in a regularized classifier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">similarity</span> <span class="o">=</span> <span class="n">embeds</span> <span class="o">@</span> <span class="n">query_embeds</span><span class="p">.</span><span class="n">T</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">similarity</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="n">similarity</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clf</span> <span class="o">=</span> <span class="nc">RidgeClassifierCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">])</span>
+<span class="n">clf</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Binary Classification Accuracy:</span><span class="sh">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="nf">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Binary Classification Accuracy:
+0.9119179837676207
+</code></pre></div></div>
+
+<p>Notice now that the number of coefficients in our classifier corresponds 1:1 with the number of queries we made… And because our queries were made with natural language, we can actually interpret these coefficients in terms of their ‘importance’ in determining the correct label!</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-110-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-110-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-110-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-110-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="caption">
+Query-Based Classifier Coefficients
+</div>
+
+<h2 id="brain-alignment-with-relative-representations">Brain Alignment with Relative Representations</h2>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-alignment-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-alignment-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-alignment-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/relative-reps-alignment.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="caption">
+Relative Representations for Brain Alignment
+</div>
+
+<p>The classification example above demonstrates that relative representations can preserve task-relevant structure while providing interpretable coefficients. But the more topic-relevant question motivating the use of this technique in this tutorial is: <strong>Can we use relative representations to understand what drives model-brain alignment?</strong></p>
+
+<p>When we fit a standard encoding model, we learn weights over thousands of opaque features. We can measure alignment, but we cannot easily interpret <em>why</em> certain images are predicted well or poorly. Relative representations offer a path forward: by projecting both model features and brain activity into a shared space defined by interpretable language queries, we can ask which semantic dimensions are most important for predicting neural responses.</p>
+
+<p>This is a form of <em>hypothesis-driven alignment analysis</em>. Rather than asking “how well does this model predict the brain?” we ask “which semantic concepts, expressible in language, mediate the correspondence between model and brain?”</p>
+
+<h3 id="defining-the-semantic-basis">Defining the Semantic Basis</h3>
+
+<p>The power of relative representations depends critically on the choice of anchor points. In <d-cite key="moschella2022relative"></d-cite>, anchors were often chosen from the data itself. Here, we take a different approach: we define anchors using natural language queries that span semantic dimensions we hypothesize might be relevant for visual brain activity.</p>
+
+<details class="code-fold">
+<summary>Define hypothesized semantic queries (73 anchor points)</summary>
+
+```python
+prompt_options = {} # initialize a dictionary for our query options (by categories, for clarity)
+
+prompt_options['camera'] = ['a picture', 'a drawing', 'a rendering']
+
+prompt_options['quality'] = ['high resolution', 'low resolution', 'high quality', 'low quality',
+                             'dark', 'bright', 'cluttered', 'clean', 'happy', 'sad',
+                             'colorful', 'black-and-white', 'professional', 'candid', 'artistic']
+
+prompt_options['agent'] = ['a person', 'a group of people',
+                           'an animal', 'a group of animals']
+
+prompt_options['object'] = ['an object', 'a group of objects', 'furniture',
+                            'food', 'a plant', 'plants', 'a vehicle', 'vehicles']
+
+prompt_options['adjective'] = ['big','small','boxy','curvy','rural', 'urban',
+                               'slow', 'fast', 'dangerous', 'safe', 'indoors','outdoors']
+
+prompt_options['places'] = ['work', 'a desk', 'a room', 'a building', 'a city', 'a park', 'a field',
+                             'a beach', 'the water', 'the sky', 'the snow', 'the desert', 'the mountains']
+
+prompt_options['time'] = ['in the morning', 'at night', 'during the day', 
+                          'in winter', 'in spring', 'in summer', 'in autumn']
+
+prompt_options['action'] = ['playing', 'working', 'fighting', 'dancing', 'jumping', 
+                            'sitting', 'standing', 'running', 'walking', 'swimming', 'flying']
+
+# flatten our categorized query options into a single list
+all_prompts = list(chain(*prompt_options.values()))
+print('Number of prompts (hypothesized anchor points): {}'.format(len(all_prompts)))
+```
+
+</details>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of prompts (hypothesized anchor points): 73
+</code></pre></div></div>
+
+<p>To see how well these queries define the representational alignment of our vision model to the visual brain data, we simply need again to compute the similarity of each query to each image embedding, then fit a regression over the resultant similarity scores.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">query_embeds</span> <span class="o">=</span> <span class="nf">get_query_embeds</span><span class="p">(</span><span class="n">all_prompts</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Shape of query embeddings:</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">query_embeds</span><span class="p">.</span><span class="n">shape</span><span class="p">])</span>
+
+<span class="n">image_query_sims</span> <span class="o">=</span> <span class="n">image_embeds</span> <span class="o">@</span> <span class="n">query_embeds</span><span class="p">.</span><span class="n">T</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Shape of similarity matrix:</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="n">el</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">image_query_sims</span><span class="p">.</span><span class="n">shape</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shape of query embeddings: [73, 768]
+Shape of similarity matrix: [1000, 73]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">type_label</span> <span class="o">=</span> <span class="sh">'</span><span class="s">Regression on Hypothesized Query Similarities</span><span class="sh">'</span>
+<span class="n">hypothesis_query_results</span> <span class="o">=</span> <span class="nf">compute_alignment</span><span class="p">(</span><span class="n">image_query_sims</span><span class="p">,</span> <span class="n">type_label</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Scoresheet for our hypothesized query regression:</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">hypothesis_query_results</span><span class="p">[</span><span class="sh">'</span><span class="s">scoresheet</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-2.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-3-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-3-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-3-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-119-output-3.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dimensionality reduction: 768 -&gt; 73 (9.5% of original)
+EVC: 108.3% performance with 90.5% fewer dimensions
+OTC: 103.5% performance with 90.5% fewer dimensions
+</code></pre></div></div>
+
+<p>And so – What do we see here? Well, first and foremost we see that with only 73 queries (73 total predictors, 73 dimensions) we can recover the full predictive power of the underlying 768-dimensional embedding space!</p>
+
+<p>And now, taking the mean absolute value of the coefficients for each query, we can see which of our 73 dimensions weighed most on our downstream brain data prediction!</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-120-output-2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-120-output-2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-120-output-2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-120-output-2.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<h3 id="visualization-coverage-of-the-manifold">Visualization: Coverage of the Manifold</h3>
+
+<p>To better understand how our query-based representations relate to the brain representational space, we can visualize both spaces using dimensionality reduction techniques. These visualizations help illustrate:</p>
+<ol>
+  <li>How query similarities “cover” the brain representational space</li>
+  <li>The geometric correspondence between query and brain spaces</li>
+</ol>
+
+<h3 id="prediction-error-on-the-brain-manifold">Prediction Error on the Brain Manifold</h3>
+
+<p>A key insight from <d-cite key="moschella2022relative"></d-cite> is that anchor points define a <strong>coordinate system</strong>: each image is “triangulated” by its similarity to the anchors. The quality of this coordinate system depends on how well the anchors span the relevant variation in the target space.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-125-output-2.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<h3 id="comparison-random-vs-hypothesized-queries">Comparison: Random vs. Hypothesized Queries</h3>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-131-output-1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-131-output-1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-131-output-1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/tutorials/assets/img/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai/cell-131-output-1.png" class="img-fluid" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<p>… what do we find? On the one hand, our hypothesized queries do indeed consistently (uniformly, in fact) outperform the random queries of the same size…</p>
+
+<p>… On the other hand, they do so by a much smaller margin than you might expect if our hypothesized queries were indeed exceptional in a deeply meaningful way…</p>
+
+<p>Further interpretation of these results is… an active area of research! And as such (albeit very much a regrettable cliffhanger), a topic we leave for you as food-for-thought. So as not to leave you fully hanging, though, here’s some questions we’ve been pondering:</p>
+
+<ul>
+  <li>What do these results tell us (if anything) about the nature of cross-modal alignment between language models and the visual brain? Is it a fluke? Or more evidence of ‘platonic’ representational structure?</li>
+  <li>By what mechanism could the random queries perform as well as they do?</li>
+  <li>What, if anything, might this finding have to do with effective dimensionality?</li>
+  <li>What, if anything, could we do to improve the hypothesized queries?
+    <ul>
+      <li>Is there more variance left to capture? If so, how much, and with what kinds of queries?</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Our tutorial has now taken us on a somewhat whirlwind tour through the core methods of representational alignment research in computational cognitive neuroscience: extracting features from deep neural networks, comparing them to brain activity using multiple metrics (RSA and encoding models), and probing cross-modal alignment between vision and language representations.</p>
+
+<p><strong>A Note on Scope</strong>: Throughout this tutorial, we have demonstrated these methods on a small number of example models. The findings from any single model (or handful of models) should be interpreted cautiously – the real power of this approach emerges when applied systematically across many models, as in <d-cite key="conwell2024large"></d-cite>. The code and methods here are designed to scale: the same functions that process one model can process hundreds, enabling the kind of controlled comparisons that distinguish modern alignment research from earlier single-model studies.</p>
+
+<p><strong>Key Takeaways</strong>:</p>
+
+<ol>
+  <li>
+    <p><strong>Different metrics reveal different aspects of alignment</strong>: Classical RSA provides a strict test of emergent geometric correspondence, while encoding models allow flexible feature reweighting. The choice of metric embodies assumptions about what constitutes a “good” match between model and brain.</p>
+  </li>
+  <li>
+    <p><strong>Many different models achieve comparable alignment</strong>: A striking finding here and in the broader literature is that qualitatively different models (even those trained on entirely different modalities of data) often achieve similar brain-predictivity scores. This parity – not visible when testing single models – motivates the multi-model, many-metric (but single pipeline!) approach demonstrated here.</p>
+  </li>
+  <li>
+    <p><strong>Cross-modal alignment raises deep questions</strong>: The fact that language models can predict visual cortex activity challenges simple modular accounts of brain organization. Whether this reflects genuine shared representations or statistical artifacts remains actively investigated.</p>
+  </li>
+  <li>
+    <p><strong>Interpretability is a moving target</strong>: The interpretability of DNNs is a moving target, circumscribed by every choice in our experimental pipelines: the data we use as probes, the model populations we sample to assess divergence, and the metrics we use to quantify greater and lesser alignment to the downstream brain and behavioral phenomena that are our ultimate targets.</p>
+  </li>
+</ol>
+
+<p><strong>Looking Forward</strong>: The broader vision of NeuroAI <d-cite key="zador2023catalyzing"></d-cite> is a bidirectional exchange: insights from neuroscience inspire more capable AI, while AI tools help us understand the brain. The goal of using DNNs to understand computational principles – not just predict brain activity – requires moving beyond single-model demonstrations to systematic, many-model comparisons. We hope this tutorial provides the methodological foundation for such investigations.</p>
+
+<p>Feel free to reuse, remix, and extend this code. For questions or suggestions, please reach out via the associated GitHub repository.</p>
+
+<hr>
+
+<h1 id="related-software">Related Software</h1>
+
+<p>This tutorial uses DeepJuice for high-throughput neural network analysis. We gratefully acknowledge the broader ecosystem of tools for representational alignment research:</p>
+
+<p><strong>Neural Benchmarking Platforms</strong>:</p>
+<ul>
+  <li>
+<a href="https://www.brain-score.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">Brain-Score</a> - Integrative benchmarks for brain-like AI <d-cite key="schrimpf2018brainscore"></d-cite>
+</li>
+  <li>
+<a href="https://github.com/cvai-roig-lab/Net2Brain" rel="external nofollow noopener noopener noreferrer" target="_blank">Net2Brain</a> - Toolbox for comparing DNNs to brain data</li>
+</ul>
+
+<p><strong>Representational Similarity and Alignment</strong>:</p>
+<ul>
+  <li>
+<a href="https://github.com/rsagroup/rsatoolbox" rel="external nofollow noopener noopener noreferrer" target="_blank">RSAToolbox</a> - Representational Similarity Analysis in Python</li>
+  <li>
+<a href="https://github.com/ahwillia/netrep" rel="external nofollow noopener noopener noreferrer" target="_blank">NetRep</a> - Metrics for comparing neural network representations</li>
+  <li>
+<a href="https://github.com/nacloos/similarity-repository" rel="external nofollow noopener noopener noreferrer" target="_blank">Similarity</a> - Repository of similarity measures</li>
+  <li>
+<a href="https://gallantlab.org/himalaya/" rel="external nofollow noopener noopener noreferrer" target="_blank">Himalaya</a> - Fast kernel methods for encoding models (Gallant Lab)</li>
+</ul>
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <d-bibliography src="/tutorials/assets/bibliography/2025-11-24-accelerated-methods-in-multi-modal-multi-metric-many-model-cogneuroai.bib"></d-bibliography>
+
+    <d-article id="bibtex-container" class="related highlight">
+      <p>For attribution in academic contexts, please cite this work as</p>
+      <pre id="bibtex-academic-attribution">PLACEHOLDER FOR ACADEMIC ATTRIBUTION</pre>
+
+      <p>BibTeX citation</p>
+      <pre id="bibtex-box">PLACEHOLDER FOR BIBTEX</pre>
+    </d-article>
+
+
+    <script src="https://utteranc.es/client.js" repo="iclr-blogposts/2025" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+</script>
+
+    <script>
+      // Wait for Distill.js to process everything
+      window.addEventListener('load', () => {
+        let trimIt = (e) => e.trim();
+        let getText = (e) => e.innerText;
+        let splitNameAndFamilyName = (e) => {
+          let splitted = e.split(" ");
+
+          let fnames = splitted.slice(0, -1).join(" ");
+          let lname = splitted.at(-1);
+
+          return [lname, fnames];
+        }
+
+        let authors = Array.from(document.getElementsByClassName("author")).map(getText).map(trimIt).map(splitNameAndFamilyName);
+
+        // Check if authors exist
+        if (!authors || authors.length === 0) {
+          console.warn("No authors found - citation generation skipped");
+          return;
+        }
+
+        let firstAuthorLName = authors[0][0];
+        let affiliationElements = Array.from(document.getElementsByClassName("affiliation")).filter(e => e.nodeName === "P").map(getText).map(trimIt);
+
+        // getting stuff directly from Jekyll
+        let publishedWhen = "November 24, 2025";
+        let title = "Accelerated Methods in {Multi-Modal, Multi-Metric, Many-Model} CogNeuroAI";
+        let description = "A tutorial showcasing a number of (GPU-accelerated) methods for probing the representational alignment of brains, minds, and machines. An exploration of computational modeling methods at the intersection of cognitive neuroscience and artificial intelligence.";
+
+        {
+          let authorsBibtex = authors.map(e => `${e[0]}, ${e[1]}`).join(" and ");
+          let bibtexTitleShorthand = (firstAuthorLName +
+                  "2025" +
+                  title.split(" ").slice(0, 3).join("")
+          ).replace(" ", "").replace(/[\p{P}$+<=>^`|~]/gu, '').toLowerCase().trim();
+          let bibtexTemplate = `
+@inproceedings{${bibtexTitleShorthand},
+  author = {${authorsBibtex}},
+  title = {${title}},
+  abstract = {${description}},
+  booktitle = {NeurIPS 2025 Workshop on "Data on the Brain \\& Mind" Tutorials Track},
+  year = {2025},
+  date = {${publishedWhen}},
+  note = {${window.location.href}},
+  url  = {${window.location.href}}
+}
+  `.trim();
+          document.getElementById("bibtex-box").innerText = bibtexTemplate;
+        }
+
+        {
+          let academicLFI = authors.map(e => e[0]);
+          {
+            if (academicLFI.length > 2) academicLFI = academicLFI[0] + ", et al.";
+            else if (academicLFI.length == 2) academicLFI = academicLFI[0] + " & " + academicLFI[1];
+            else academicLFI = academicLFI[0];
+          }
+          let academicTemplate = `
+${academicLFI}, "${title}", NeurIPS 2025 Workshop on "Data on the Brain & Mind" Tutorials Track, 2025.
+`.trim();
+          document.getElementById("bibtex-academic-attribution").innerText = academicTemplate;
+        }
+      });
+    </script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    
+  </body>
+
+
+</html>
